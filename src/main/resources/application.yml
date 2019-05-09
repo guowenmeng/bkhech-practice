@@ -1,0 +1,4 @@
+server:
+  servlet:
+    context-path: /practice
+  port: 8080
