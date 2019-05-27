@@ -1,10 +1,10 @@
-package com.brian.home.practice;
+package com.bkhech.home.practice;
 
 import com.alibaba.fastjson.JSONObject;
-import com.brian.home.practice.entity.AccountState;
-import com.brian.home.practice.enums.PlayerHandlerType;
-import com.brian.home.practice.utils.DateTimeFormatterUtils;
-import com.brian.home.practice.utils.RandomStringUtil;
+import com.bkhech.home.practice.entity.AccountState;
+import com.bkhech.home.practice.enums.PlayerHandlerType;
+import com.bkhech.home.practice.utils.DateTimeFormatterUtils;
+import com.bkhech.home.practice.utils.RandomStringUtil;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
 

@@ -1,4 +1,4 @@
-package com.brian.home.practice.enums;
+package com.bkhech.home.practice.enums;
 
 /**
  * @author guowm[guowm@5fun.com]

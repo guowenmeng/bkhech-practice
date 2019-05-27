@@ -1,4 +1,4 @@
-package com.brian.home.practice.java8;
+package com.bkhech.home.practice.java8;
 
 import org.junit.Test;
 

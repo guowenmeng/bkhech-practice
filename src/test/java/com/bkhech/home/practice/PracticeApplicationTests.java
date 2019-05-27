@@ -1,4 +1,4 @@
-package com.brian.home.practice;
+package com.bkhech.home.practice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

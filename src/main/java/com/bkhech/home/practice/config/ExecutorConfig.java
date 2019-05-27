@@ -1,4 +1,4 @@
-package com.brian.home.practice.config;
+package com.bkhech.home.practice.config;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.context.annotation.Bean;

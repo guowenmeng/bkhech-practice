@@ -1,4 +1,4 @@
-package com.brian.home.practice.entity;
+package com.bkhech.home.practice.entity;
 
 /**
  * @author guowm[guowm@5fun.com]
