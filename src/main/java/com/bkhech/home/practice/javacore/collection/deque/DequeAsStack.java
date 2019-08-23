@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2019/8/23
  *
  * 官方建议使用Deque替代Stack: Line 134

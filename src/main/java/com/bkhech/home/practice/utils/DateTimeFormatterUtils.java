@@ -10,7 +10,7 @@ import java.time.format.SignStyle;
 import static java.time.temporal.ChronoField.*;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2018/11/29
  */
 public class DateTimeFormatterUtils {

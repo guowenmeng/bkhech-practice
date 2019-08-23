@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2018/12/18
  */
 public class MapFlatMapTest {

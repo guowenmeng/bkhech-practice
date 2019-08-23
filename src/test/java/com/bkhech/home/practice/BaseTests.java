@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2018/11/26
  */
 public class BaseTests {

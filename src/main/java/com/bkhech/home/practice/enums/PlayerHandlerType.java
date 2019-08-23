@@ -1,7 +1,7 @@
 package com.bkhech.home.practice.enums;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2019/2/22
  */
 public enum PlayerHandlerType {
