@@ -15,16 +15,24 @@ public class DequeAsStack {
 
     public static void stack() {
         Stack<Integer> stack = new Stack<>();
-        IntStream.range(0,10).forEach(item -> stack.add(item));
+        IntStream.range(0,10).forEach(item -> stack.push(item));
         Integer stackElement = stack.pop();
         System.out.println("stackElement = " + stackElement);
     }
 
     public static void dequeAsStack() {
         Queue asLifoQueue = Collections.asLifoQueue(new ArrayDeque());
-        IntStream.range(0,10).forEach(item -> asLifoQueue.add(item));
+        IntStream.range(0,10).forEach(item -> asLifoQueue.offer(item));
         Object poll = asLifoQueue.poll();
         System.out.println("poll = " + poll);
+
+
+        ArrayDeque stack = new ArrayDeque();
+        IntStream.range(0,10).forEach(item -> stack.push(item));
+        Object pop = stack.pop();
+        System.out.println("pop = " + pop);
+
+
     }
 
     public static void main(String[] args) {
