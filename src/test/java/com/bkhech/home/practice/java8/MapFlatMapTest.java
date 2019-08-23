@@ -49,7 +49,7 @@ public class MapFlatMapTest {
         Stream<String> streamFlatmap = lists.stream().flatMap(l -> l.stream());
 
 
-        streamMap.forEach(System.out::println);
+        streamRaw.forEach(System.out::println);
         streamFlatmap.forEach(System.out::println);
 
 
