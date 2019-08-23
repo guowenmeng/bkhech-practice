@@ -1,8 +1,9 @@
 package com.bkhech.home.practice.javacore.core.运算符;
 
 /**
- * @author guowm[guowm@5fun.com]
+ * @author guowm
  * @date 2019/8/20
+ * @description
  */
 public class Operator {
 
