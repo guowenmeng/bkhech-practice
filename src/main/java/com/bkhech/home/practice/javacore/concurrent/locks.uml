@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.concurrent.locks</OriginalElement>
+  <nodes>
+    <node x="542.735119047619" y="171.5">java.util.concurrent.locks.LockSupport</node>
+    <node x="576.985119047619" y="317.5">java.util.concurrent.locks.AbstractQueuedSynchronizer</node>
+    <node x="337.23511904761904" y="80.0">java.util.concurrent.locks.Lock</node>
+    <node x="52.982142857142776" y="0.0">java.util.concurrent.locks.Condition</node>
+    <node x="52.232142857142776" y="160.0">java.util.concurrent.locks.ReentrantLock</node>
+    <node x="20.0" y="306.0">java.util.concurrent.locks.ReentrantReadWriteLock</node>
+    <node x="861.9017857142858" y="171.5">java.util.concurrent.locks.AbstractOwnableSynchronizer</node>
+    <node x="864.985119047619" y="317.5">java.util.concurrent.locks.AbstractQueuedLongSynchronizer</node>
+    <node x="283.2321428571428" y="183.0">java.util.concurrent.locks.ReadWriteLock</node>
+    <node x="377.98511904761904" y="317.5">java.util.concurrent.locks.StampedLock</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.locks.AbstractQueuedLongSynchronizer" target="java.util.concurrent.locks.AbstractQueuedLongSynchronizer">
+      <point x="0.0" y="26.5" />
+      <point x="1003.485119047619" y="390.5" />
+      <point x="844.985119047619" y="390.5" />
+      <point x="844.985119047619" y="344.0" />
+      <point x="-138.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.StampedLock" target="java.util.concurrent.locks.Lock">
+      <point x="0.0" y="-26.5" />
+      <point x="457.48511904761904" y="286.0" />
+      <point x="453.75" y="286.0" />
+      <point x="453.75" y="140.0" />
+      <point x="399.73511904761904" y="140.0" />
+      <point x="25.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantLock" target="java.util.concurrent.locks.Condition">
+      <point x="-52.75" y="-38.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.LockSupport" target="java.util.concurrent.locks.LockSupport">
+      <point x="-57.75" y="26.5" />
+      <point x="561.985119047619" y="244.5" />
+      <point x="522.735119047619" y="244.5" />
+      <point x="522.735119047619" y="198.0" />
+      <point x="-77.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedSynchronizer" target="java.util.concurrent.locks.AbstractOwnableSynchronizer">
+      <point x="62.0" y="-26.5" />
+      <point x="762.985119047619" y="286.0" />
+      <point x="988.4017857142858" y="286.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantReadWriteLock" target="java.util.concurrent.locks.ReadWriteLock">
+      <point x="68.0" y="-38.0" />
+      <point x="224.0" y="286.0" />
+      <point x="317.2321428571428" y="286.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.StampedLock" target="java.util.concurrent.locks.ReadWriteLock">
+      <point x="-53.0" y="-26.5" />
+      <point x="404.48511904761904" y="286.0" />
+      <point x="385.2321428571428" y="286.0" />
+      <point x="34.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedLongSynchronizer" target="java.util.concurrent.locks.LockSupport">
+      <point x="-69.25" y="-26.5" />
+      <point x="934.235119047619" y="276.0" />
+      <point x="677.485119047619" y="276.0" />
+      <point x="57.75" y="26.5" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantReadWriteLock" target="java.util.concurrent.locks.Condition">
+      <point x="-68.0" y="-38.0" />
+      <point x="88.0" y="286.0" />
+      <point x="21.732142857142776" y="286.0" />
+      <point x="21.732142857142776" y="55.0" />
+      <point x="70.31547619047615" y="55.0" />
+      <point x="-34.66666666666663" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.StampedLock" target="java.util.concurrent.locks.LockSupport">
+      <point x="53.0" y="-26.5" />
+      <point x="510.48511904761904" y="286.0" />
+      <point x="600.485119047619" y="286.0" />
+      <point x="-19.25" y="26.5" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedLongSynchronizer" target="java.util.concurrent.locks.AbstractOwnableSynchronizer">
+      <point x="69.25" y="-26.5" />
+      <point x="84.33333333333331" y="26.5" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractOwnableSynchronizer" target="java.util.concurrent.locks.AbstractOwnableSynchronizer">
+      <point x="-84.33333333333331" y="26.5" />
+      <point x="904.0684523809525" y="244.5" />
+      <point x="841.9017857142858" y="244.5" />
+      <point x="841.9017857142858" y="198.0" />
+      <point x="-126.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.StampedLock" target="java.util.concurrent.locks.StampedLock">
+      <point x="0.0" y="26.5" />
+      <point x="457.48511904761904" y="390.5" />
+      <point x="357.98511904761904" y="390.5" />
+      <point x="357.98511904761904" y="344.0" />
+      <point x="-79.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReadWriteLock" target="java.util.concurrent.locks.Lock">
+      <point x="0.0" y="-15.0" />
+      <point x="351.2321428571428" y="140.0" />
+      <point x="374.73511904761904" y="140.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedSynchronizer" target="java.util.concurrent.locks.LockSupport">
+      <point x="-62.0" y="-26.5" />
+      <point x="19.25" y="26.5" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantLock" target="java.util.concurrent.locks.Lock">
+      <point x="52.75" y="-38.0" />
+      <point x="210.48214285714278" y="130.0" />
+      <point x="349.73511904761904" y="130.0" />
+      <point x="-25.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantLock" target="java.util.concurrent.locks.ReentrantLock">
+      <point x="0.0" y="38.0" />
+      <point x="157.73214285714278" y="256.0" />
+      <point x="32.232142857142776" y="256.0" />
+      <point x="32.232142857142776" y="198.0" />
+      <point x="-105.5" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.ReentrantReadWriteLock" target="java.util.concurrent.locks.ReentrantReadWriteLock">
+      <point x="0.0" y="38.0" />
+      <point x="156.0" y="402.0" />
+      <point x="0.0" y="402.0" />
+      <point x="0.0" y="344.0" />
+      <point x="-136.0" y="-0.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.Lock" target="java.util.concurrent.locks.Condition">
+      <point x="0.0" y="-15.0" />
+      <point x="374.73511904761904" y="55.0" />
+      <point x="139.6488095238094" y="55.0" />
+      <point x="34.66666666666663" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.locks.AbstractQueuedSynchronizer" target="java.util.concurrent.locks.AbstractQueuedSynchronizer">
+      <point x="0.0" y="26.5" />
+      <point x="700.985119047619" y="390.5" />
+      <point x="556.985119047619" y="390.5" />
+      <point x="556.985119047619" y="344.0" />
+      <point x="-124.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="582.0" y="375.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
