@@ -17,6 +17,17 @@ public class Operator {
         System.out.println("j = " + j);
     }
 
+    /**
+     * 进制转换
+     */
+    public static void test1() {
+        //128M
+        long l = 1024 * 1024 * 128;
+        String hexStr = Long.toHexString(l);
+        //0x8000000
+        System.out.println("hexStr = " + hexStr);
+    }
+
     public static void main(String[] args) {
         test();
     }
