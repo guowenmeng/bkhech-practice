@@ -8,11 +8,13 @@ import com.bkhech.home.practice.utils.RandomStringUtil;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
@@ -146,6 +148,118 @@ public class BaseTests {
         System.out.println("s = " + s);
     }
 
+    @Test
+    public void unsigned() {
+        long i = Integer.toUnsignedLong(-233);
+        System.out.println("i = " + i);
+        String s = Integer.toUnsignedString(-233);
+        System.out.println("s = " + s);
 
 
+        long a = 0xffffffffL;
+        System.out.println("a = " + a);
+        BigInteger bigInteger = new BigInteger("ffffffff", 16);
+        System.out.println("bigInteger = " + bigInteger.toString());
+        System.out.println("bigInteger = " + bigInteger.toString(2));
+        System.out.println("bigInteger = " + bigInteger.toString(16));
+
+        int cc = -12 >> 2;
+        System.out.println("cc = " + cc);
+        BigInteger integer = new BigInteger(String.valueOf(cc));
+        String s1 = integer.toString(2);
+        System.out.println("s1 = " + s1);
+
+        BigInteger byteInteger = new BigInteger("00111111111111111111111111111101", 2);
+        System.out.println("byteInteger = " + byteInteger.toString());
+
+        /**
+         * 取余。
+         * 使用 & 来进行取余的算法比使用 / 效率高很多，
+         * 虽然只能对2^n的数值进行取余计算，
+         * 但是在JDK源码中也是经常被使用到，比如说HashMap中判断key在Hash桶中的位置。
+         */
+        int aMod = 33;
+        int mod1 = aMod & 15;
+        int mod2 = aMod % 16;
+        System.out.println("mod1 = " + mod1);
+        System.out.println("mod2 = " + mod2);
+
+        /**
+         * 求相反数
+         */
+        int aa = 1000;
+        long bb = ~aa + 1;
+        System.out.println("bb = " + bb);
+
+        /**
+         * 求绝对值
+         */
+        int aaa = -3000000;
+        System.out.println("aaa >> 31 = " + (aaa >> 31));
+        int bbb = aaa >> 31 == 0 ? aaa : (~aaa + 1);
+        System.out.println("bbb = " + bbb);
+
+        /**
+         * 原文地址：https://blog.csdn.net/Leon_cx/article/details/81911183
+         * 生成第一个大于或者等于a的满足2^n的数
+         *
+         * 这个标题可能显得不那么容易理解，下面结合场景来解释一下。
+         *
+         * 在HashMap中我们需要生成一个Hash桶，用来存储键值对（或者说存储链表）。
+         * 当我们查询一个key的时候，会计算出这个key的hashCode，然后根据这个hashCode来计算出这个key在hash桶中的落点，
+         * 由于上面介绍的使用 & 来取余效率比 % 效率高，所以HashMap中根据hashCode计算落点使用的是 & 来取余。
+         * 使用 & 取余有一个局限性就是除数必须是2^n，所以hash桶的size必须是2^n。
+         * 由于HashMap的构造器支持传入一个初始的hash桶size，所以HashMap需要对用户传入的size进行处理，生成一个第一个大于size的并且满足2^n的数。
+         * 这个算法的使用场景介绍完毕了，那么再来看一下算法实现：
+         *
+         * 循环判断
+         * public static final int tableSizeFor(int cap) {
+         *     int size = 1;
+         *     while (size < cap) {
+         *         size *= 2;
+         *     }
+         *     return size;
+         * }
+         * | 运算符实现
+         * public static final int tableSizeFor(int cap) {
+         *     int n = cap - 1;
+         *     n |= n >>> 1;
+         *     n |= n >>> 2;
+         *     n |= n >>> 4;
+         *     n |= n >>> 8;
+         *     n |= n >>> 16;
+         *     return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+         * }
+         * HashMap就是使用这个算法来修改用户使用构造器传进来的size的，这个算法是使用移位和或结合来实现的，性能上比循环判断要好。
+         */
+        Map map = new HashMap(2);
+        Map concurrentMap = new ConcurrentHashMap(2);
+
+        System.out.println("tableSizeFor() = " + tableSizeFor(6));
+
+        int aaaa=232;
+        //0000 0000 1110 1000
+
+        System.out.println("aaaa = " + Integer.toBinaryString(aaaa));
+
+        //强转变为8位：11101000（原码），十进制等于-24
+        System.out.println("aaaa = " + (byte) aaaa);
+
+        /**
+         * 位溢出
+         */
+        byte dd = (byte)128;
+        System.out.println("dd = " + dd);
+
+    }
+    int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        System.out.println("n = " + n);
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return n + 1;
+    }
 }
