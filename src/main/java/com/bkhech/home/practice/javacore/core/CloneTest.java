@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.javacore.concurrent.base;
+package com.bkhech.home.practice.javacore.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
