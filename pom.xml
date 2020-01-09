@@ -72,6 +72,14 @@
 		</dependency>
 		<!-- 生成二维码 end -->
 
+		<!-- protobuf start -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.11.1</version>
+		</dependency>
+		<!-- protobuf end -->
+
 	</dependencies>
 
 	<build>
