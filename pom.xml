@@ -80,6 +80,14 @@
 		</dependency>
 		<!-- protobuf end -->
 
+		<!-- jieba tokenizer start -->
+		<dependency>
+			<groupId>com.huaban</groupId>
+			<artifactId>jieba-analysis</artifactId>
+			<version>1.0.3-SNAPSHOT</version>
+		</dependency>
+		<!-- jieba tokenizer end -->
+
 	</dependencies>
 
 	<build>
