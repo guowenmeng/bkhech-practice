@@ -1,5 +1,7 @@
 # 中文分词
 
+- 常用分词比较：https://www.jianshu.com/p/85c3b1171704
+
 ## Jieba
 - https://www.oschina.net/p/jieba-analysis
 - https://github.com/huaban/jieba-analysis.git
@@ -14,3 +16,7 @@
         mvn package install ，安装到本地仓库
         在你的 pom.xml 文件中添加以下依赖。
 ```
+
+## Ansj
+
+- https://github.com/NLPchina/ansj_seg.git
