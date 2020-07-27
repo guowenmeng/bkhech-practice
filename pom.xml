@@ -82,10 +82,18 @@
 
 		<!-- tokenizer start -->
 		<!-- jieba -->
+<!--		<dependency>-->
+<!--			<groupId>com.huaban</groupId>-->
+<!--			<artifactId>jieba-analysis</artifactId>-->
+<!--			<version>1.0.3-SNAPSHOT</version>-->
+<!--		</dependency>-->
+<!--		TFIDFAnalyzer类库并没有发布到 maven仓库，采用本地编译方式-->
 		<dependency>
 			<groupId>com.huaban</groupId>
 			<artifactId>jieba-analysis</artifactId>
 			<version>1.0.3-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/jieba-analysis-1.0.3-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<!-- jieba -->
 
