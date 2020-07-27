@@ -14,8 +14,8 @@ import java.util.Map;
 public class AnnotationTest {
 
     public static void main(String[] args) {
-//        String simpleName = OrderType.class.getSimpleName();
-//        System.out.println("simpleName = " + simpleName);
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+
         Map<OrderType, OrderHandler> map = new HashMap<>(2);
         PCOrderHandler pcOrderHandler = new PCOrderHandler();
         OrderType annotationPC = AnnotationUtils.findAnnotation(pcOrderHandler.getClass(), OrderType.class);

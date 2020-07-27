@@ -1,8 +1,5 @@
 package com.bkhech.home.practice.javacore.core.annotation.handle;
 
-import org.springframework.stereotype.Component;
-
-@Component
 @OrderType(source = "mobile", payType = "wechat")
 public class MobileOrderHandler implements OrderHandler {
     @Override
