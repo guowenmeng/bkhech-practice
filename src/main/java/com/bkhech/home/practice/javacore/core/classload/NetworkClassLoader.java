@@ -32,7 +32,7 @@ public class NetworkClassLoader extends ClassLoader{
             if (Objects.isNull(classData)) {
                 throw new ClassNotFoundException();
             }
-            //加class字节码数组转化成Class类的实例
+            //将class字节码数组转化成Class类的实例
             clazz = super.defineClass(name, classData, 0 , classData.length);
         }
         return clazz;
