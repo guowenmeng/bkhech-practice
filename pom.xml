@@ -106,6 +106,15 @@
 		<!--ansj-->
 		<!-- tokenizer end -->
 
+		<!-- dynamic proxy start cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+		<!-- dynamic proxy end -->
+
 	</dependencies>
 
 	<build>
