@@ -8,6 +8,11 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * @author guowm
  * @date 2020/9/3
+ * @see AtomicReference
+ * @see java.util.concurrent.atomic.AtomicReferenceFieldUpdater
+ * @see java.util.concurrent.atomic.AtomicReferenceArray
+ * @see java.util.concurrent.atomic.AtomicStampedReference
+ * @see java.util.concurrent.atomic.AtomicMarkableReference
  * @description
  */
 public class AtomicReferenceDemo {
@@ -38,7 +43,7 @@ public class AtomicReferenceDemo {
         /**
          * note: 要想改变atomicObjectReference中的Value值，只能通过compareAndSet()方法
          * 不论中间怎么改变AtomicReference引用的value对象，都无效。
-         * 从而提现了，原子性的改变一个对象的多个属性值。
+         * 从而体现了，原子性的改变一个对象的多个属性值。
          */
         //1.不论中间怎么改变AtomicReference引用的value对象，都无效。
         initialReferenceValue.setValue(3);
