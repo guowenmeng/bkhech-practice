@@ -2,6 +2,7 @@ package com.bkhech.home.practice.javacore.concurrent.locks;
 
 import com.sun.corba.se.impl.orbutil.concurrent.Sync;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
@@ -21,6 +22,12 @@ import java.util.concurrent.locks.Lock;
  * 取锁的lock()方法为例，只需要在方法实现中调用同步器的模板方法acquire(int args)即可，当
  * 前线程调用该方法获取同步状态失败后会被加入到同步队列中等待，这样就大大降低了实现
  * 一个可靠自定义同步组件的门槛
+ *
+ * 缺点：
+ * 当一个线程调用Mutex的lock()方法获取锁之后，如果再次调用lock()方法，则该线程将会被自己所阻塞，
+ * 原因是Mutex在实现tryAcquire(int acquires)方法时没有考虑占有锁的线程再次获取锁的场景，而在调用
+ * tryAcquire(int acquires)方法时返回了false，导致该线程被阻塞。
+ * 简单地说，Mutex是一个不支持重进入的锁。
  *
  * @see Semaphore
  * 可用 Semaphore semaphore = new Semaphore(1); 替换
