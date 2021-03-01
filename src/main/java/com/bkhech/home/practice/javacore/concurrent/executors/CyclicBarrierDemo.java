@@ -15,7 +15,8 @@ public class CyclicBarrierDemo {
     }
 
     /**
-     * 因为主线程和子线程的调度是由CPU决定的，两个线程都有可能先执行，所以会产生两种输出
+     * CyclicBarrier还提供一个更高级的构造函数CyclicBarrier（int parties，Runnable barrierAction），
+     * 用于在线程到达屏障时，优先执行barrierAction，方便处理更复杂的业务场景
      */
     static class CyclicBarrierTest2 {
         static CyclicBarrier c = new CyclicBarrier(2, new CyclicBarrierDemo.CyclicBarrierTest2.A());
@@ -47,8 +48,7 @@ public class CyclicBarrierDemo {
     }
 
     /**
-     * CyclicBarrier还提供一个更高级的构造函数CyclicBarrier（int parties，Runnable barrierAction），
-     * 用于在线程到达屏障时，优先执行barrierAction，方便处理更复杂的业务场景
+     * 因为主线程和子线程的调度是由CPU决定的，两个线程都有可能先执行，所以会产生两种输出
      */
     static class CyclicBarrierTest1 {
         static CyclicBarrier c = new CyclicBarrier(2);
