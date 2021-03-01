@@ -129,7 +129,13 @@
 			<artifactId>rxjava</artifactId>
 			<version>2.2.20</version>
 		</dependency>
-	</dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
