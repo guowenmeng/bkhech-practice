@@ -9,6 +9,8 @@ import java.util.concurrent.*;
  */
 public class ExecutorsTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        //把一个Runnable对象封装为一个Callable对象（Executors.callable（Runnable task）或 Executors.callable（Runnable task，Object result））
+//        Executors.callable()
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         TaskRunnale runnale = new TaskRunnale("runnale");
