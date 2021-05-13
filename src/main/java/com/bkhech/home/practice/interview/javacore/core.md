@@ -15,10 +15,6 @@
 2. 关于重写hashcode和equals方法
 > https://blog.csdn.net/u012557538/article/details/89861552
 
-
-
-
-
 3. 合 List、Map、Set 等底层设计，以及其使用场景与注意细节
 ArrayList、LinkedList
 > https://mp.weixin.qq.com/s?__biz=MzA5NTE1MjY0NQ==&mid=2648832203&idx=1&sn=d613329ba4b4747012afc53aba76a1eb&chksm=8856e7a1bf216eb77f310d4823f3f089ac547a1f5e2eb1fce600388a3711d834074845085a49&scene=21#wechat_redirect
@@ -59,3 +55,8 @@ public static void removeB(ArrayList<String> l) {
 且在 for 循环中调用 list 中的 remove 方法，会走到一个 fastRemove 方法，该方法不是 iterator 中的方法，而是 ArrayList 中的方法，在该方法只做了 modCount++，而没有同步到 expectedModCount。所以不一致就抛出了 ConcurrentModificationException 异常了。
 
 如果有看过阿里 Java 编程规范就知道，在集合中进行 remove 操作时，不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁。
+
+4. ArrayList的ensureCapacity()方法
+> https://www.jianshu.com/p/17a447698e03
+
+ArrayList 添加大量元素之前最好先使用ensureCapacity 方法，以减少增量重新分配的次数(减少扩容)
