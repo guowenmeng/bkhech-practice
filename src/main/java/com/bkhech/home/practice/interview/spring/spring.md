@@ -317,6 +317,7 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 	重写：你仍然需要使用和< property>设置指明依赖，这意味着总要重写自动装配。
 	原生数据类型：你不能自动装配简单的属性，如原生类型、字符串和类。
 	模糊特性：自动装配总是没有自定义装配精确，因此如果可能尽量使用自定义装配。
+
 18  请解释各种自动装配模式的区别？
 在Spring框架中共有5种自动装配，让我们逐一分析。 
 （1）no：这是Spring框架的默认设置，在该设置下自动装配是关闭的，开发者需要自行在Bean定义中用标签明确地设置依赖关系。
@@ -324,6 +325,7 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 （3）byType：该选项可以根据Bean类型设置依赖关系。当向一个Bean中自动装配一个属性时，容器将根据Bean的类型自动在配置文件中查询一个匹配的Bean。如果找到就装配这个属性，如果没找到就报错。
 （4）constructor：它的自动装配和byType模式类似，但是仅适用于有与构造器相同参数的Bean，如果在容器中没有找到与构造器参数类型一致的Bean，那么将会抛出异常。
 （5）autodetect：该模式自动探测使用构造器自动装配或者byType自动装配。首先会尝试找合适的带参数的构造器，如果找到就是用构造器自动装配，如果在Bean内部没有找到相应的构造器或者是无参构造器，容器就会自动选择byTpe的自动装配方式。
+
 19  请举例解释@Required Annotation？
 在产品级别的应用中，IOC容器可能声明了数十万了Bean，Bean与Bean之间有着复杂的依赖关系。设置注解方法的短板之一就是验证所有的属性是否被注解是一项十分困难的操作。可以通过设置“dependency-check”来解决这个问题。
 在应用程序的生命周期中，你可能不大愿意花时间验证所有Bean的属性是否按照上下文文件正确配置。或者你宁可验证某个Bean的特定属性是否被正确设置。即使用“dependency-check”属性也不能很好地解决这个问题，在这种情况下你需要使用@Required 注解。 
@@ -345,11 +347,11 @@ RequiredAnnotationBeanPostProcessor是Spring中的后置处理器，用来验证
 ```xml
 <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 ```
-
 但是如果没有属性被用@Required注解过，后置处理器会抛出一个BeanInitializationException异常。
+
 20  请举例说明@Qualifier注解？
 (1) @Qualifier注解意味着可以在被标注Bean的字段上自动装配。
-(2) Qualifier注解可以根据bean名称来消除Spring不能准确识别的多个同类型的Bean注入。
+(2) @Qualifier注解可以根据bean名称来消除Spring不能准确识别的多个同类型的Bean注入。
 (3) 在依赖注入或者依赖查找时用来分组
 
 
