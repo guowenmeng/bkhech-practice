@@ -2,6 +2,11 @@ package com.bkhech.home.practice.spring.aspectorder;
 
 /**
  * filter,interceptor,controllerAdvice,aspect,controller执行顺序
+ *
+ * 自定义拦截器（interceptor）
+ *  拦截时机 Filter previous -> HttpServlet.service -> DispatcherServlet dispatcher -> preHandle ->controller
+ *   ->postHandle - > afterCompletion -> Filter after
+ *
  * @see /com/bkhech/home/practice/interview/spring/img/spring-aspect-order.png
  *
  * 1、filter，这是java的过滤器，和框架无关的，是所有过滤组件中最外层的，从粒度来说是最大的。
