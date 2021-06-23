@@ -40,27 +40,48 @@
 // 
 //
 // 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？ 
-// Related Topics 数组 哈希表 
+// Related Topics 数组 哈希表
 // 👍 11396 👎 0
 
 package com.bkhech.home.practice.leetcode.editor.cn;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 两数之和
  * guowm
- * 2021-06-23 07:57:48
+ * 2021-06-23 10:01:04
  */
 class TwoSum{
-	public static void main(String[] args) {
-		Solution solution = new TwoSum().new Solution();
-		// TODO test
-	}
-	
+    public static void main(String[] args) {
+        Solution solution = new TwoSum().new Solution();
+        int[] nums = new int[]{7,2,11,15};
+        int target = 9;
+        final int[] twoSum = solution.twoSum(nums, target);
+        System.out.println(Arrays.toString(twoSum));
+    }
+ 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2) {
+            return null;
+        }
 
-    	return null;
+        Map<Integer, Integer> numsMap = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            int key = target - nums[i];
+            if (numsMap.containsKey(key)) {
+                // numsMap.get(key) 的下标永远小于 当前 i 的下标值
+                return new int[]{numsMap.get(key), i};
+            } else {
+                numsMap.putIfAbsent(nums[i], i);
+            }
+        }
+
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
