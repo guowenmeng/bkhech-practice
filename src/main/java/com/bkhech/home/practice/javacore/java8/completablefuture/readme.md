@@ -1,0 +1,3 @@
+# CompletableFuture
+> Java8新增的CompletableFuture 提供对异步计算的支持，可以通过回调的方式处理计算结果.
+>CompletableFuture 类实现了CompletionStage和Future接口，所以还可以像之前使用Future那样使用CompletableFuture ，尽管已不再推荐这样用了。
