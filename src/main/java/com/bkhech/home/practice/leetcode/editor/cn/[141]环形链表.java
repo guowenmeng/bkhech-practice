@@ -77,14 +77,68 @@ class LinkedListCycle{
 		System.out.println(hasCycle);
 	}
 
-static class ListNode {
-	int val;
-    ListNode next;
-	ListNode(int x) {
-	  val = x;
-	  next = null;
+	/**
+	 * 求环长
+	 * 思路：第一次相遇时，继续前进，统计循环次数，直到再次相遇，循环次数即为环长。
+	 * slow每次一步，fast每次两步，速度差是1步。当slow和fast再次相遇时，fast比slow多走了一圈
+	 * @param head
+	 * @return
+	 */
+	public int getCycleLength(ListNode head) {
+		int len = 0;
+		int meetCount = 0;
+		ListNode slow = head, fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (meetCount == 1) {
+				len++;
+			}
+			if (slow == fast) {
+				meetCount++;
+				if (meetCount == 2) {
+					return len;
+				}
+			}
+		}
+		return -1;
 	}
-}
+
+	/**
+	 * 使用一个HashSet作为额外的缓存，存储已经访问的节点
+	 * Time O(N)
+	 * Space O(n)
+	 * @param head
+	 * @return
+	 */
+	public boolean hasCycleV1(ListNode head) {
+		if (head == null) {
+			return false;
+		}
+
+		HashSet<ListNode> visited = new HashSet<>();
+		visited.add(head);
+
+		ListNode currentNode = head;
+		while (currentNode.next != null) {
+			if (visited.contains(currentNode.next)) {
+				return true;
+			}
+
+			currentNode = currentNode.next;
+			visited.add(currentNode);
+		}
+		return false;
+	}
+
+	static class ListNode {
+		int val;
+		ListNode next;
+		ListNode(int x) {
+		  val = x;
+		  next = null;
+		}
+	}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -116,31 +170,6 @@ public class Solution {
 			if (slow == fast) {
 				return true;
 			}
-		}
-		return false;
-	}
-
-	/**
-	 * 使用一个HashSet作为额外的缓存，存储已经访问的节点
-	 * Time O(N)
-	 * Space O(n)
-	 * @param head
-	 * @return
-	 */
-	public boolean hasCycleV1(ListNode head) {
-		if (head == null) {
-			return false;
-		}
-
-		HashSet<ListNode> visited = new HashSet<>();
-		ListNode currentNode = head;
-		while (currentNode.next != null) {
-			if (visited.contains(currentNode.next)) {
-				return true;
-			}
-
-			currentNode = currentNode.next;
-			visited.add(currentNode);
 		}
 		return false;
 	}
