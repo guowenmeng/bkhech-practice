@@ -81,6 +81,7 @@ class LinkedListCycle{
 	 * 求环长
 	 * 思路：第一次相遇时，继续前进，统计循环次数，直到再次相遇，循环次数即为环长。
 	 * slow每次一步，fast每次两步，速度差是1步。当slow和fast再次相遇时，fast比slow多走了一圈
+     * 公式：环长 = 每一次速度差 * 前进次数
 	 * @param head
 	 * @return
 	 */
