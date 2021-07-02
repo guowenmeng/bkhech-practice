@@ -54,6 +54,8 @@ import java.util.HashMap;
  * 实现前缀树 Trie
  * guowm
  * 2021-06-23 11:26:47
+ * {@inheritDoc doc/208-shi-xian-trie-qian-zhui-shu-zi-dian-j6rpu.md}
+ * {@inheritDoc doc/trie-tree-de-shi-xian-gua-he-chu-xue-zhe-by-huwt.md}
  */
 class ImplementTriePrefixTree{
 
