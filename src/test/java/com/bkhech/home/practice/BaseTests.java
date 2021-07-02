@@ -2,7 +2,6 @@ package com.bkhech.home.practice;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bkhech.home.practice.entity.AccountState;
-import com.bkhech.home.practice.enums.PlayerHandlerType;
 import com.bkhech.home.practice.utils.DateTimeFormatterUtils;
 import com.bkhech.home.practice.utils.RandomStringUtil;
 import org.junit.Test;
@@ -82,14 +81,26 @@ public class BaseTests {
     }
     
     @Test
-    public void EnumTest() {
-        System.out.println(" = update something test....");
-        System.out.println("PlayerHandlerType.BAN.getName() = " + PlayerHandlerType.BAN.getName());
-        System.out.println(" = update something test....");
-        System.out.println(" = update something test....");
-        System.out.println(" = update something test....");
+    public void baseTest() {
+        int h = "111111111111".hashCode();
+        System.out.println(h);
+        System.out.println("h = " + toBinaryAutoPadding32Bit(h));
+        final int i = h >>> 16;
+        System.out.println("i = " + toBinaryAutoPadding32Bit(i));
+        int ret = h ^ i;
+        System.out.println("r = " + toBinaryAutoPadding32Bit(ret));
     }
 
+    private String toBinaryAutoPadding32Bit(int h) {
+        final String binaryString = Integer.toBinaryString(h);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 32 - binaryString.length(); i++) {
+            sb.append("0");
+        }
+        sb.append(binaryString);
+        return sb.toString();
+    }
 
     /**
      * ThreadLocalRandom
