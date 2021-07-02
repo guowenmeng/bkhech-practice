@@ -62,6 +62,7 @@ class FindFirstAndLastPositionOfElementInSortedArray{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     /**
+     * 注释：第一个位置和第二个位置分开查找
      * Time O(logn)
      * Space O(1)
      * @param nums
