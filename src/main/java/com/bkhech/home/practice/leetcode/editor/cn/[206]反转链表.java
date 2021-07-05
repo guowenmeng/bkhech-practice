@@ -92,11 +92,29 @@ class ReverseLinkedList{
  */
 class Solution {
     /**
-     * 迭代方法，双指针
+     * 递归调用
      * @param head
      * @return
      */
     public ListNode reverseList(ListNode head) {
+        return reverse(null, head);
+    }
+
+    private ListNode reverse(ListNode pre,ListNode cur){
+        if(cur == null) {
+            return pre;
+        }
+        ListNode next = cur.next;
+        cur.next = pre;
+        return reverse(cur,next);
+    }
+
+    /**
+     * 迭代方法，双指针
+     * @param head
+     * @return
+     */
+    public ListNode reverseListV1(ListNode head) {
         if (head == null) {
             return null;
         }
