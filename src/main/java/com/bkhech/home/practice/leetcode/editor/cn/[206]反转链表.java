@@ -92,7 +92,7 @@ class ReverseLinkedList{
  */
 class Solution {
     /**
-     * 迭代方法
+     * 迭代方法，双指针
      * @param head
      * @return
      */
@@ -102,18 +102,18 @@ class Solution {
         }
 
         ListNode prev = null; //前指针节点
-        ListNode curr = head; //当前指针节点
+        ListNode cur = head; //当前指针节点
         //每次循环，都将当前节点指向它前面的节点，然后当前节点和前节点后移
-        while (curr != null) { // 边界条件：curr == null表明链表遍历完成
+        while (cur != null) { // 边界条件：cur == null表明链表遍历完成
             //临时节点，暂存当前节点的下一节点，用于后移
-            ListNode nextTemp = curr.next;
+            ListNode next = cur.next;
             //将当前节点指针（curr.next）指向它前面的节点
-            curr.next = prev;
+            cur.next = prev;
 
             //前指针（prev节点）后移一步
-            prev = curr;
-            //当前指针（curr节点）后移一步
-            curr = nextTemp;
+            prev = cur;
+            //当前指针（cur节点）后移一步
+            cur = next;
         }
         //最终返回的是，以prev为尾节点的链表
         return prev;
