@@ -48,9 +48,15 @@ public class LifecycleDemo implements InitializingBean, SmartInitializingSinglet
     }
 
     @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        log.info("--------setBeanClassLoader------------{}", classLoader);
+    }
+
+    /** ------------------------BeanPostProcessor 后置处理器----------------------------- */
+    @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
        if (bean.getClass().isAssignableFrom(LifecycleDemo.class)) {
-           log.info("--------postProcessBeforeInitialization------------{}", beanName);
+           log.info("--------postProcessBeforeInitialization-------@Bean的init()方法之前执行-----{}", beanName);
        }
         return null;
     }
@@ -58,13 +64,10 @@ public class LifecycleDemo implements InitializingBean, SmartInitializingSinglet
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean.getClass().isAssignableFrom(LifecycleDemo.class)) {
-            log.info("--------postProcessAfterInitialization------------{}", beanName);
+            log.info("--------postProcessAfterInitialization--------@Bean的init()方法之后执行----{}", beanName);
         }
         return null;
     }
+    /** ------------------------BeanPostProcessor 后置处理器----------------------------- */
 
-    @Override
-    public void setBeanClassLoader(ClassLoader classLoader) {
-        log.info("--------setBeanClassLoader------------{}", classLoader);
-    }
 }
