@@ -49,3 +49,89 @@ Redis 支持的数据类型：string（字符串）、list（列表）、hash（
 Redis 的持久化有两种方式，或者说有两种策略：
 · RDB（Redis Database）：指定的时间间隔能对你的数据进行快照存储。
 · AOF（Append Only File）：每一个收到的写命令且执行成功的命令都通过write函数追加到文件中。
+
+11. Redis用过是吧？那你讲讲Redis都有哪些监控指标？
+
+    > https://mp.weixin.qq.com/s/CESc14pVBTfhjLhMYEtTkg
+
+    - 性能指标：Performance
+
+      | Name                      | Description              |
+      | :------------------------ | :----------------------- |
+      | latency                   | Redis响应一个请求的时间  |
+      | instantaneous_ops_per_sec | 平均每秒处理请求总数     |
+      | hi rate(calculated)       | 缓存命中率（计算出来的） |
+
+    - 内存指标: Memory
+
+      | Name                    | Description                                   |
+      | :---------------------- | :-------------------------------------------- |
+      | used_memory             | 已使用内存                                    |
+      | mem_fragmentation_ratio | 内存碎片率                                    |
+      | evicted_keys            | 由于最大内存限制被移除的key的数量             |
+      | blocked_clients         | 由于BLPOP,BRPOP,or BRPOPLPUSH而备阻塞的客户端 |
+
+    - 基本活动指标：Basic activity
+
+      | Name                       | Description                |
+      | :------------------------- | :------------------------- |
+      | connected_clients          | 客户端连接数               |
+      | conected_laves             | slave数量                  |
+      | master_last_io_seconds_ago | 最近一次主从交互之后的秒数 |
+      | keyspace                   | 数据库中的key值总数        |
+
+    - 持久性指标: Persistence
+
+      | Name                       | Description                        |
+      | :------------------------- | :--------------------------------- |
+      | rdb_last_save_time         | 最后一次持久化保存磁盘的时间戳     |
+      | rdb_changes_sice_last_save | 自最后一次持久化以来数据库的更改数 |
+
+    - 错误指标：Error
+
+      | Name                           | Description                           |
+      | :----------------------------- | :------------------------------------ |
+      | rejected_connections           | 由于达到maxclient限制而被拒绝的连接数 |
+      | keyspace_misses                | key值查找失败(没有命中)次数           |
+      | master_link_down_since_seconds | 主从断开的持续时间（以秒为单位)       |
+
+    #### 监控方式
+
+    - redis-benchmark(性能测试)
+
+    - redis-stat(需要安装此监控程序)
+
+    - redis-cli
+
+      - monitor(实时监控redis指令)
+
+      - info（可以一次性获取所有的信息，也可以按块获取信息）
+
+        - 1）server:服务器运行的环境参数
+        - 2）clients:客户端相关信息
+        - 3）memory：服务器运行内存统计数据
+        - 4）persistence：持久化信息
+        - 5）stats：通用统计数据
+        - 6）Replication：主从复制相关信息
+        - 7）CPU：CPU使用情况
+        - 8）cluster：集群信息
+        - 9）Keypass：键值对统计数量信息
+
+      - slowlog(慢日志) 
+
+        > 语法： slowlog get 2
+
+        - 1）get：获取慢查询日志
+        - 2）len：获取慢查询日志条目数
+        - 3）reset：重置慢查询日志
+
+      相关配置：
+
+    - ```shell
+      slowlog-log-slower-than 1000 # 设置慢查询的时间下线，单位：微秒
+      slowlog-max-len 100 # 设置慢查询命令对应的日志显示长度，单位：命令数
+      ```
+
+    - 
+
+12. 
