@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 
 /**
  * ExecutorService Shutdown() ShutdownNow()
+ * {@literal https://segmentfault.com/a/1190000021302247}
  * @author guowm
  * @date 2021/9/10
  */
