@@ -1,73 +1,80 @@
 package com.bkhech.home.practice.spring.lifecycle;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 /**
  * spring lifecycle demo
+ * BeanNameAware > BeanClassLoaderAware > BeanFactoryAware > BeanPostProcessor.postProcessBeforeInitialization > @PostConstruct > InitializingBean > SmartInitializingSingleton > BeanPostProcessor.postProcessAfterInitialization > DisposableBean
+ *                        各种 Aware                        >
+ * LifecycleDemo constructor
+ * LifecycleDemo setBeanName---lifecycleDemo
+ * LifecycleDemo setBeanClassLoader--sun.misc.Launcher$AppClassLoader@18b4aac2
+ * LifecycleDemo setBeanFactory
+ * LifecycleDemo postProcessBeforeInitialization----lifecycleDemo
+ * LifecycleDemo @PostConstruct
+ * LifecycleDemo afterPropertiesSet
+ * LifecycleDemo initMethod
+ * LifecycleDemo postProcessAfterInitialization----lifecycleDemo
+ * LifecycleDemo afterSingletonsInstantiated
+ *
  * @author guowm
  * @date 2021/5/14
  */
-@Slf4j
-//@Component
-public class LifecycleDemo implements InitializingBean, SmartInitializingSingleton, BeanClassLoaderAware, BeanPostProcessor, BeanFactoryAware, BeanNameAware, DisposableBean {
+public class LifecycleDemo implements
+        BeanNameAware,
+        BeanClassLoaderAware,
+        BeanFactoryAware,
+        InitializingBean,
+        SmartInitializingSingleton,
+        DisposableBean {
 
-   @PostConstruct
-   public void init() {
-       log.info("----------init---------------");
+    public LifecycleDemo() {
+        System.out.println("LifecycleDemo constructor");
+    }
+
+    @PostConstruct
+   public void initPostConstruct() {
+       System.out.println("LifecycleDemo @PostConstruct");
    }
+
+    public void initMethod() {
+        System.out.println("LifecycleDemo initMethod");
+    }
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        log.info("--------setBeanFactory------------{}");
+        System.out.println("LifecycleDemo setBeanFactory");
     }
 
     @Override
     public void setBeanName(String name) {
-        log.info("--------setBeanName------------{}", name);
-
+        System.out.println("LifecycleDemo setBeanName---" + name);
     }
 
     @Override
     public void destroy() throws Exception {
-        log.info("--------destroy------------{}");
+        System.out.println("LifecycleDemo destroy");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("--------afterPropertiesSet------------{}");
+        System.out.println("LifecycleDemo afterPropertiesSet");
     }
 
     @Override
     public void afterSingletonsInstantiated() {
-        log.info("--------afterSingletonsInstantiated------------{}");
+       //实例化之后执行
+        System.out.println("LifecycleDemo afterSingletonsInstantiated");
     }
 
     @Override
     public void setBeanClassLoader(ClassLoader classLoader) {
-        log.info("--------setBeanClassLoader------------{}", classLoader);
+        System.out.println("LifecycleDemo setBeanClassLoader--" + classLoader);
     }
-
-    /** ------------------------BeanPostProcessor 后置处理器----------------------------- */
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-       if (bean.getClass().isAssignableFrom(LifecycleDemo.class)) {
-           log.info("--------postProcessBeforeInitialization-------@Bean的init()方法之前执行-----{}", beanName);
-       }
-        return null;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (bean.getClass().isAssignableFrom(LifecycleDemo.class)) {
-            log.info("--------postProcessAfterInitialization--------@Bean的init()方法之后执行----{}", beanName);
-        }
-        return null;
-    }
-    /** ------------------------BeanPostProcessor 后置处理器----------------------------- */
 
 }
