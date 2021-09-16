@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author guowm
  * @date 2021/3/3
  */
-//@Configuration(proxyBeanMethods = false) // Full模式，默认
+//@Configuration(proxyBeanMethods = true) // Full模式，默认
 @Configuration(proxyBeanMethods = false) // Lite模式
 public class LiteConfig {
 
