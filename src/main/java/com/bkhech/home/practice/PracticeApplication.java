@@ -23,7 +23,7 @@ public class PracticeApplication {
         while (true) {
             System.out.println(String.format("param>>>>>>>>>>>>>>:%s", param));
             System.out.println("add ...  = ");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             count.incrementAndGet();
             if (count.get()==3) {
                 System.out.println("==end==");
