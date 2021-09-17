@@ -27,6 +27,7 @@ public class PracticeApplication {
             count.incrementAndGet();
             if (count.get()==3) {
                 System.out.println("==end==");
+                count.set(0);
                 break;
             }
         }
