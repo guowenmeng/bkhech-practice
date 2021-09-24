@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import reactor.core.publisher.Mono;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,8 +23,11 @@ public class PracticeApplication {
     public String hello(@RequestParam(required=false) String param) throws InterruptedException {
         while (true) {
             System.out.println(String.format("param>>>>>>>>>>>>>>:%s", param));
-            System.out.println("add ...  = ");
-            Thread.sleep(500);
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             count.incrementAndGet();
             if (count.get()==3) {
                 System.out.println("==end==");
@@ -31,7 +35,29 @@ public class PracticeApplication {
                 break;
             }
         }
-        return "hi, new company =>>>>>>>>>>>>";
+        return "hi, new company =>>>>>>>>>>>>" + param;
+    }
+
+    @GetMapping(value = "/hello/reactor", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Mono<String> helloReactor(@RequestParam(required=false) String param) {
+        return Mono.defer(() -> {
+            while (true) {
+                System.out.println(String.format("param>>>>>>>>reactor>>>>>>:%s", param));
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                count.incrementAndGet();
+                if (count.get()==3) {
+                    System.out.println("=reactor=end==");
+                    count.set(0);
+                    break;
+                }
+            }
+            return Mono.just("hi, new company =>>>>>>>reactor>>>>>" + param);
+        });
     }
 
 

@@ -151,6 +151,10 @@
 			<systemPath>${project.basedir}/libs/object-size-agent-1.0.0.jar</systemPath>
 		</dependency>
 
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+		</dependency>
     </dependencies>
 
 	<build>
