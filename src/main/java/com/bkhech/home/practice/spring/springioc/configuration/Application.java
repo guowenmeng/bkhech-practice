@@ -34,10 +34,10 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
+        System.out.println(context.getBean("liteConfig", LiteConfig.class));
         // 配置类情况
-        System.out.println(context.getBean(LiteConfig.class).getClass());
-        System.out.println(context.getBean(LiteConfig.InnerConfig.class).getClass());
+        System.out.println(context.getBean(LiteConfig.class));
+        System.out.println(context.getBean(LiteConfig.InnerConfig.class));
 
         String[] beanNames = context.getBeanNamesForType(User.class);
         for (String beanName : beanNames) {

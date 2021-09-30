@@ -11,7 +11,7 @@ import java.util.concurrent.locks.Lock;
  * @date 2021/3/1
  * @description
  */
-public class MutexLockTest {
+public class MutexLockThreadPoolExecutorWorkerCountOfDemo {
 
     @Test
     public void test() {
