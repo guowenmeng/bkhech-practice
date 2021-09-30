@@ -23,7 +23,8 @@ public class ReflectionDemo {
     public static void main(String[] args) throws NoSuchMethodException {
 //        arrayInstanceDemo();
 //        classDemo();
-        annotationDemo();
+//        annotationDemo();
+        methodDemo();
     }
 
     @TestAn("ReflectionDemo#testMethod")
@@ -32,6 +33,14 @@ public class ReflectionDemo {
     public void testMethod(String s) {
 
     }
+
+    public void testMethodPublic(){};
+
+    protected void testMethodProtected(){};
+
+    private void testMethodPrivate(){};
+
+    void testMethodDefault(){};
 
     private interface InnerInterface {
 
@@ -162,5 +171,18 @@ public class ReflectionDemo {
         // 赋值
         Array.set(arrInstance, 0, "2");
         System.out.println("arrInstance:" + arrInstance);
+    }
+
+    /**
+     * 方法样例
+     */
+    private static void methodDemo() {
+        final Class<ReflectionDemo> reflectionDemoClass = ReflectionDemo.class;
+        System.out.println("------------getMethods-------包括父类在内的所有 public 方法---------");
+        Arrays.stream(reflectionDemoClass.getMethods()).forEach(System.out::println);
+        System.out.println("------------getDeclaredMethods------当前类声明的所有方法----------");
+        Arrays.stream(reflectionDemoClass.getDeclaredMethods()).forEach(System.out::println);
+        System.out.println("------------getEnclosingMethod-----啥意思？？？---------");
+        System.out.println(reflectionDemoClass.getEnclosingMethod());
     }
 }
