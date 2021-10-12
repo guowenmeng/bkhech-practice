@@ -273,6 +273,9 @@ public class CompletableFutureDemo {
     }
 
     /**
+     * acceptEither、applyToEither、runAfterEither 使用样例
+     *
+     * 以下主要举例说明 acceptEither 使用.
      * acceptEither方法返回一个新的CompletionStage，当此阶段或另一个给定阶段正常完成时，将使用相应的结果作为所提供操作的参数来执行该过程。
      * acceptEither方法是使用此阶段或其他给定阶段的结果执行的，无论哪个通常较早完成。
      * 从Java文档中找到acceptEither方法的方法声明。
