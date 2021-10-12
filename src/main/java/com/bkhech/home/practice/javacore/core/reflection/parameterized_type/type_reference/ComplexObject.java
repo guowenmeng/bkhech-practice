@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.javacore.core.generic.type_reference;
+package com.bkhech.home.practice.javacore.core.reflection.parameterized_type.type_reference;
 
 /**
  * 复杂对象

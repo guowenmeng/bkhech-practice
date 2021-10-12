@@ -4,7 +4,7 @@ package com.bkhech.home.practice.javacore.core.reflection.parameterized_type;
  * @author guowm
  * @date 2021/7/6
  */
-public class ParameterizedTypeDemo extends ParameterizedClass<MyClass, MyInvoke> {
+public class ParameterizedTypeDemo extends ParameterizedClass<MyClass, MyInvoke> implements ParameterizedInterface<String, String> {
     public static void main(String[] args) {
         ParameterizedTypeDemo parameterizedTypeDemo = new ParameterizedTypeDemo();
     }

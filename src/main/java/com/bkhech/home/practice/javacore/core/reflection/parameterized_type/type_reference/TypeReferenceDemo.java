@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.javacore.core.generic.type_reference;
+package com.bkhech.home.practice.javacore.core.reflection.parameterized_type.type_reference;
 
 import java.lang.reflect.Type;
 
@@ -16,7 +16,7 @@ public class TypeReferenceDemo {
 
         TypeReferenceComplexObject<Double> typeReferenceComplexObject = new TypeReferenceComplexObject<>();
         final Type complexObjectRawType = typeReferenceComplexObject.getRawType();
-        // class com.bkhech.home.practice.javacore.core.generic.type_reference.ComplexObject
+        // class com.bkhech.home.practice.javacore.core.reflection.parameterized_type.type_reference.ComplexObject
         // 无法获取到 ComplexObject 泛型参数的引用
         System.out.println("complexObjectRawType = " + complexObjectRawType);
     }
