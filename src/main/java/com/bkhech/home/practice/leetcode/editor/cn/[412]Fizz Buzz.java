@@ -60,18 +60,22 @@ class FizzBuzz{
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     *
+     * @param n
+     * @return
+     */
     public List<String> fizzBuzz(int n) {
-        if (n == 0) {
-            return Collections.emptyList();
-        }
         List<String> answers = new ArrayList<>(n);
         for (int i = 1; i < n + 1; i++) {
             String ans = String.valueOf(i);
-            if (i%3 == 0 && i%5 == 0) {
+            boolean multiplesOf3 = i%3 == 0;
+            boolean multiplesOf5 = i%5 == 0;
+            if (multiplesOf3 & multiplesOf5) {
                 ans = "FizzBuzz";
-            } else if (i%3 == 0) {
+            } else if (multiplesOf3) {
                 ans = "Fizz";
-            } else if (i%5 == 0) {
+            } else if (multiplesOf5) {
                 ans = "Buzz";
             }
             answers.add(ans);
