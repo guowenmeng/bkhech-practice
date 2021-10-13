@@ -47,6 +47,65 @@ class LongestCommonPrefix{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String longestCommonPrefix(String[] strs) {
+        return longestCommonPrefixV1(strs);
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
+
+    /**
+     * 方法四：二分查找法
+     * Time: O(mnlogm)
+     * Space: O(1)
+     * @param strs
+     * @return
+     */
+    public String longestCommonPrefixV4(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        //字符串数组中的最短字符串的长度
+        int minLength = strs[0].length();
+        for (String str : strs) {
+            minLength = Math.min(minLength, str.length());
+        }
+
+        //在 [0,minLength] 的范围内通过二分查找得到最长公共前缀的长度
+        int low = 0, high = minLength;
+        while (low < high) {
+            int mid = (high - low + 1) / 2 + low;
+            if (isCommonPrefix(strs, mid)) {
+                low = mid;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return strs[0].substring(0, low);
+    }
+
+    private boolean isCommonPrefix(String[] strs, int length) {
+        final String str0 = strs[0].substring(0, length);
+        int count = strs.length;
+        //从第二个位置开始
+        for (int i = 1; i < count; i++) {
+            String str = strs[i];
+            for (int j = 0; j < length; j++) {
+                if (str0.charAt(j) != str.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 方法三：分治法
+     * Time: O(mn)
+     * Space: O(mlogn)
+     * @param strs
+     * @return
+     */
+    public String longestCommonPrefixV3(String[] strs) {
         // 方法三：分治法
         if (strs == null || strs.length == 0) {
             return "";
@@ -75,15 +134,15 @@ class Solution {
         return lcpLeft.substring(0, minLength);
     }
 
-}
-//leetcode submit region end(Prohibit modification and deletion)
-
     /**
      * 方法二：纵向扫描
+     * 最优解，符合正常思维模型，易于想到
+     * Time: O(mn)
+     * Space: O(1)
      * @param strs
      * @return
      */
-    public String longestCommonPrefixV3(String[] strs) {
+    public String longestCommonPrefixV2(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
         }
@@ -104,10 +163,13 @@ class Solution {
 
     /**
      * 方法一：横向扫描
+     * 最优解
+     * Time: O(mn)
+     * Space: O(1)
      * @param strs
      * @return
      */
-    public String longestCommonPrefixV2(String[] strs) {
+    public String longestCommonPrefixV1(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
         }
@@ -136,7 +198,7 @@ class Solution {
      * @param strs
      * @return
      */
-    public String longestCommonPrefixV1(String[] strs) {
+    public String longestCommonPrefixV0(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
         }
