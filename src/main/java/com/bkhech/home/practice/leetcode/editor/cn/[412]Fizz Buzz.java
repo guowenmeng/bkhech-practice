@@ -60,7 +60,9 @@ class FizzBuzz{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     /**
-     *
+     * 嘶嘶嗡嗡
+     * Time: O(n)
+     * Space: O(1)
      * @param n
      * @return
      */
