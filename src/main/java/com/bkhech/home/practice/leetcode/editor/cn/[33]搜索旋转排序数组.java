@@ -93,12 +93,12 @@ class Solution {
             //左半部分有序，一定是<=
             if (nums[left] <= nums[mid]) {
                 //target 值在左半边
-                if (nums[left] < target && target <= nums[mid]) {
+                if (nums[left] <= target && target < nums[mid]) {
                     right = mid - 1;
                 } else {
                     left = mid + 1;
                 }
-                //右半部分有序
+            //右半部分有序
             } else {
                 //target 值在右半边
                 if (nums[mid] < target && target <= nums[right]) {
