@@ -95,9 +95,9 @@ class WordDictionary {
 
     /**
      * addWord
-     *  Time: O(1)
+     *  Time: O(M)。M 为每次添加或搜索的单词的长度
      * search
-     *  Time:(N * M)。M 为单词长度，N 为 M 处单词集长度
+     *  Time:(N * M)。M 为每次添加或搜索的单词的长度，N 为 M 处单词集大小
      */
     class WordDictionaryV1 {
     List<Set<String>> dictionary;
