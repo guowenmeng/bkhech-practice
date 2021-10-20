@@ -71,20 +71,50 @@ class DesignAddAndSearchWordsDataStructure{
 	
 //leetcode submit region begin(Prohibit modification and deletion)
 class WordDictionary {
-    List<Set<String>> dictionary;
+	    //字典树解法
 
     public WordDictionary() {
+    }
+    
+    public void addWord(String word) {
+    }
+    
+    public boolean search(String word) {
+        return false;
+    }
+
+}
+
+/**
+ * Your WordDictionary object will be instantiated and called as such:
+ * WordDictionary obj = new WordDictionary();
+ * obj.addWord(word);
+ * boolean param_2 = obj.search(word);
+ */
+//leetcode submit region end(Prohibit modification and deletion)
+
+    /**
+     * addWord
+     *  Time: O(1)
+     * search
+     *  Time:(500 * 500)
+     */
+    class WordDictionaryV1 {
+    List<Set<String>> dictionary;
+
+    public WordDictionaryV1() {
         dictionary = new ArrayList<>();
         for (int i = 0; i < 500; i++) {
             dictionary.add(new HashSet<>());
         }
     }
-    
+
     public void addWord(String word) {
         int index = word.length() - 1;
+        //把相同长度的单词放到数组的相同位置
         dictionary.get(index).add(word);
     }
-    
+
     public boolean search(String word) {
         int index = word.length() - 1;
         Set<String> wordSet = dictionary.get(index);
@@ -111,13 +141,4 @@ class WordDictionary {
         return true;
     }
 }
-
-/**
- * Your WordDictionary object will be instantiated and called as such:
- * WordDictionary obj = new WordDictionary();
- * obj.addWord(word);
- * boolean param_2 = obj.search(word);
- */
-//leetcode submit region end(Prohibit modification and deletion)
-
 }
