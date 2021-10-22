@@ -63,6 +63,8 @@ class DesignAddAndSearchWordsDataStructure{
         wordDictionary.addWord("bad");
         wordDictionary.addWord("dad");
         wordDictionary.addWord("mad");
+        wordDictionary.addWord("cat");
+        wordDictionary.addWord("bat");
         System.out.println(wordDictionary.search("pad"));
         System.out.println(wordDictionary.search("bad"));
         System.out.println(wordDictionary.search(".ad"));
@@ -71,16 +73,91 @@ class DesignAddAndSearchWordsDataStructure{
 	
 //leetcode submit region begin(Prohibit modification and deletion)
 class WordDictionary {
-	    //字典树解法
+    /**
+     * 字典树解法
+     * init:
+     * Time: O(1)
+     * addWord
+     *  Time: O(M)。M 为每次添加或搜索的单词的长度
+     * search
+     *  Time:(N * M)。M 为每次添加或搜索的单词的长度，N 为 M 处单词集大小
+     */
+    Trie root;
 
     public WordDictionary() {
+        root = new Trie();
     }
     
     public void addWord(String word) {
+        root.insert(word);
     }
     
     public boolean search(String word) {
+        //从字典树的根结点开始搜索
+        return dfs(word, 0, root);
+    }
+
+    /**
+     * 深度遍历（中序遍历）
+     * @param word 搜索词
+     * @param index 单词索引
+     * @param node 当前字典结点
+     * @return
+     */
+    private boolean dfs(String word, int index, Trie node) {
+        //搜索完给定单词的最后一个字符，isEnd = true 表示单词存在
+        if (word.length() == index) {
+            return node.isEnd;
+        }
+        char ch = word.charAt(index);
+        //当前字符是字母，则判断当前字符的子节点是否存在，如果子节点存在则移动到子节点，
+        // 继续搜索下一个字符，如果子节点不存在则说明单词不存在，返回 false
+        if (Character.isLetter(ch)) {
+            int childIndex = ch - 'a';
+            Trie child = node.getChildren()[childIndex];
+            if (child != null && dfs(word, index + 1, child)) {
+                return true;
+            }
+        } else {//当前字符是点号（.），由于点号可以表示任何字母，因此需要对当前结点的所有非空子节点继续搜索下一个字符
+            for (int i = 0; i < 26; i++) {
+                Trie child = node.getChildren()[i];
+                if (child != null && dfs(word, index + 1, child)) {
+                    return true;
+                }
+            }
+        }
         return false;
+    }
+
+
+    class Trie {
+        private Trie[] children;
+        private boolean isEnd;
+        public Trie() {
+            children = new Trie[26];
+            isEnd = false;
+        }
+
+        public void insert(String word) {
+            Trie node = this;
+            for (int i = 0; i < word.length(); i++) {
+                char ch = word.charAt(i);
+                int index = ch - 'a';
+                if (node.children[index] == null) {
+                    node.children[index] = new Trie();
+                }
+                node = node.children[index];
+            }
+            node.isEnd = true;
+        }
+
+        public Trie[] getChildren() {
+            return children;
+        }
+
+        public boolean isEnd() {
+            return isEnd;
+        }
     }
 
 }
@@ -94,10 +171,12 @@ class WordDictionary {
 //leetcode submit region end(Prohibit modification and deletion)
 
     /**
+     * init:
+     * Time: O(1)
      * addWord
-     *  Time: O(1)
+     *  Time: O(M)。M 为每次添加或搜索的单词的长度
      * search
-     *  Time:(500 * 500)
+     *  Time:(N * M)。M 为每次添加或搜索的单词的长度，N 为 M 处单词集大小
      */
     class WordDictionaryV1 {
     List<Set<String>> dictionary;
