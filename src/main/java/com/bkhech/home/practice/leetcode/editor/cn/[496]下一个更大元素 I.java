@@ -45,10 +45,10 @@
 
 package com.bkhech.home.practice.leetcode.editor.cn;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
- * 下一个更大元素
+ * 下一个更大元素I
  * guowm
  * 2021-10-26 18:59:47
  */
@@ -62,10 +62,32 @@ class NextGreaterElementI{
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * 单调栈 + 哈希表
+     * Time: O(m + n)，其中 m 是 num1 的长度，n 是 num2 的长度。
+     *  我们需要遍历 num2 以计算 num2 中每个元素右边的第一个更大的值；需要遍历 num1 以生产查询结果。
+     * Space: O(n)，用于存储哈希表
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int m = nums1.length, n = nums2.length;
-        int[] ans = new int[m];
+        Map<Integer, Integer> map = new HashMap<>(16);
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = n - 1; i >= 0; i--) {
+            int num = nums2[i];
+            while (!stack.isEmpty() && num >= stack.peek()) {
+                stack.pop();
+            }
+            map.put(num, stack.isEmpty() ? -1 : stack.peek());
+            stack.push(num);
+        }
 
+        int[] ans = new int[m];
+        for (int i = 0; i < m; i++) {
+            ans[i] = map.get(nums1[i]);
+        }
         return ans;
     }
 }
