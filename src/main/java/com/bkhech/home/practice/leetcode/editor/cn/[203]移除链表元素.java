@@ -70,11 +70,44 @@ class RemoveLinkedListElements{
  * }
  */
 class Solution {
-    public ListNode removeElements(ListNode head, int val) {
-        ListNode ansNode = head;
-        if (ansNode == null) {
+    /**
+     * 递归
+     * Time: O(n)，其中 n 是链表的长度。需要遍历一次链表
+     * Space: O(n), 其中 n 是链表的长度。空间复杂度取决于递归调用栈。最多不会超过 n 层。
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode removeElementsRecursion(ListNode head, int val) {
+        //入栈
+        //递归的终止条件是 head 为空
+        if (head == null) {
             return null;
         }
+        head.next = removeElementsRecursion(head.next, val);
+        //出栈
+        return head.val == val ? head.next : head;
+    }
+
+    /**
+     * 迭代
+     *    巧妙使用虚拟结点，解决要删除结点时一个的问题：
+     *    由于链表的头结点 head 有可能需要被删除，因此创建虚拟结点 dumpHead，
+     *    令 dumpHead.next = head，初始化 temp = dumpHead，然后遍历链表进行删除。
+     *    最终返回 dumpHead.next 即为删除操作后的头结点。
+     * Time: O(n)，其中 n 是链表的长度。需要遍历一次链表
+     * Space: O(1)
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        //创建虚拟结点
+        ListNode dumpHead = new ListNode(0);
+        //将头结点挂到虚拟结点下
+        dumpHead.next = head;
+        ListNode ansNode = dumpHead;
+        // 遍历链表，删除链表值等于 val 的结点
         while (ansNode.next != null) {
             if (ansNode.next.val == val) {
                 ansNode.next = ansNode.next.next;
@@ -82,16 +115,9 @@ class Solution {
                 ansNode = ansNode.next;
             }
         }
-        if (head.val == val) {
-            if (head.next != null) {
-                head.val = head.next.val;
-                head.next = head.next.next;
-            } else {
-                return null;
-            }
-        }
-        return head;
+        return dumpHead.next;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
@@ -101,6 +127,42 @@ class Solution {
       ListNode() {}
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
+    /**
+     * 迭代
+     * Time: O(n)，其中 n 是链表的长度
+     * Space: O(1)
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode removeElementsV1(ListNode head, int val) {
+        ListNode ansNode = head;
+        // 若头结点为空，直接返回
+        if (ansNode == null) {
+            return null;
+        }
+        // 遍历链表，删除链表值等于 val 的结点
+        while (ansNode.next != null) {
+            if (ansNode.next.val == val) {
+                ansNode.next = ansNode.next.next;
+            } else {
+                ansNode = ansNode.next;
+            }
+        }
+        // 是否需要删除头结点，若头结点的值等于 val ，则删除
+        if (head.val == val) {
+            if (head.next != null) {
+                //由于头结点没有前一个结点，把自己伪装成下一个节点（技巧）
+                //注意：要删除当前结点，当不知道当前结点的上一个结点时，可以使用此技巧
+                head.val = head.next.val;
+                head.next = head.next.next;
+            } else {
+                return null;
+            }
+        }
+        return head;
     }
 
 }
