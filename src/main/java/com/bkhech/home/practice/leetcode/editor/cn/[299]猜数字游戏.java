@@ -74,22 +74,37 @@ import java.util.Map;
  */
 class BullsAndCows{
      public static void main(String[] args) {
+         Solution solution = new BullsAndCows().new Solution();
+         String secret = "1123", guess = "0111";
+         String ans = solution.getHint(secret, guess);
+         System.out.println(ans);
      }
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * Time: O(n)，其中 n 为字符串 secret 长度
+     * Space: O(C), 需要常数个空间统计字符出现的次数，由于我们统计的是数字字符，因此 C=10
+     * @param secret
+     * @param guess
+     * @return
+     */
     public String getHint(String secret, String guess) {
         int bulls = 0, cows = 0;
         int[] cntS = new int[10];
         int[] cntG = new int[10];
-        int length = secret.length();
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < secret.length(); i++) {
             if (secret.charAt(i) == guess.charAt(i)) {
-                ++bulls;
+                bulls++;
             } else {
+                cntS[secret.charAt(i) - '0']++;
+                cntG[guess.charAt(i) - '0']++;
             }
         }
-        return null;
+        for (int i = 0; i < cntS.length; i++) {
+            cows = cows + Math.min(cntS[i], cntG[i]);
+        }
+        return bulls + "A" + cows + "B";
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
