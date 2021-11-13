@@ -50,7 +50,7 @@ class DetectCapital{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 	/**
-	 * Time: O(n), 其中 n 为单词长度。
+	 * Time: O(n), 其中 n 为单词长度。我们需要遍历字符串中的每个字符
 	 * Space：O(1)
 	 * @param word
 	 * @return
