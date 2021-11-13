@@ -72,9 +72,7 @@ class Solution {
 	public int minEatingSpeed(int[] piles, int h) {
 		int maxK = 0;
 		for (int i = 0; i < piles.length; i++) {
-			if (piles[i] > maxK) {
-				maxK = piles[i];
-			}
+			maxK = Math.max(maxK, piles[i]);
 		}
 		int left = 1;
 		int right = maxK;
