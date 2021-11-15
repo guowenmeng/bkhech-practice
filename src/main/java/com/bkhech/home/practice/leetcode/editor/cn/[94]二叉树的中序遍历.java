@@ -91,6 +91,7 @@ class BinaryTreeInorderTraversal{
 class Solution {
 	/**
 	 * 方法二：迭代
+	 * 中序遍历特点：左节点 -> 根节点 -> 右节点
 	 * Time: O(n)，其中 n 为二叉树结点的个数。二叉树的遍历中每个结点会被访问一次且只会被访问一次。
 	 * Space: O(n), 空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n) 级别。
 	 * @param root
