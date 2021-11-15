@@ -92,7 +92,8 @@ class Solution {
 	/**
 	 * 迭代 V2
 	 * 前序遍历特点：根节点 -> 左节点 -> 右节点
-	 *
+	 * Time: O(n), 其中 n 是二叉树的节点数。每一个结点恰好被遍历一次。
+	 * Space: O(n)，为迭代过程中显示栈的开销，平均情况下为 O(logn)，最坏情况下数呈链状，为O(n)
 	 * @param root
 	 * @return
 	 */
@@ -102,16 +103,16 @@ class Solution {
     		return ans;
 		}
 		Deque<TreeNode> stack = new LinkedList<>();
-		stack.push(root);
-    	while (!stack.isEmpty()) {
-			TreeNode node = stack.pop();
-			if (node == null) {
-				continue;
+    	TreeNode node = root;
+
+		while (!stack.isEmpty() || node != null) {
+			while (node != null) {
+				ans.add(node.val);
+				stack.push(node);
+				node = node.left;
 			}
-			ans.add(node.val);
-			// 栈的特点是先进后出
-			stack.push(node.right);
-			stack.push(node.left);
+			node = stack.pop();
+			node = node.right;
 		}
     	return ans;
     }
