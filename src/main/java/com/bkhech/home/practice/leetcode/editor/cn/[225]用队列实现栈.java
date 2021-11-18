@@ -57,6 +57,7 @@
 
 package com.bkhech.home.practice.leetcode.editor.cn;
 
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -91,56 +92,30 @@ class ImplementStackUsingQueues{
      * Space: O(n)，其中 n 是栈内元素的个数。需要用两个队列存储栈内的元素
      */
     class MyStack {
-    // 辅助入栈操作的辅助队列
-    Queue<Integer> tmpQ1;
-    // 存储栈内的元素
-    Queue<Integer> q2;
+        Queue<Integer> q;
 
-    public MyStack() {
-        tmpQ1 = new LinkedList<>();
-        q2 = new LinkedList<>();
-    }
-    
-    public void push(int x) {
-//        while (!q2.isEmpty()) {
-//            tmpQ1.offer(q2.poll());
-//        }
-//        q2.offer(x);
-//        while (!tmpQ1.isEmpty()) {
-//            q2.offer(tmpQ1.poll());
-//        }
-
-        tmpQ1.offer(x);
-        while (!q2.isEmpty()) {
-            tmpQ1.offer(q2.poll());
+        public MyStack() {
+            q = new LinkedList<>();
         }
-        // 交换
-        swap(tmpQ1, q2);
-    }
 
-    private void swap(Queue<Integer> q1, Queue<Integer> q2) {
-        Queue<Integer> temp = q1;
-        this.tmpQ1 = q2;
-        this.q2 = temp;
-    }
+        public void push(int x) {
+            q.offer(x);
+            for (int i = 0; i < q.size() - 1; i++) {
+                q.offer(q.poll());
+            }
+        }
 
-    public int pop() {
-        if (!q2.isEmpty()) {
-            return q2.poll();
+        public int pop() {
+            return q.poll();
         }
-        return -1;
-    }
-    
-    public int top() {
-        if (!q2.isEmpty()) {
-            return q2.peek();
+
+        public int top() {
+            return q.peek();
         }
-        return -1;
-    }
-    
-    public boolean empty() {
-        return q2.isEmpty();
-    }
+
+        public boolean empty() {
+            return q.isEmpty();
+        }
 }
 
 /**
@@ -153,4 +128,66 @@ class ImplementStackUsingQueues{
  */
 //leetcode submit region end(Prohibit modification and deletion)
 
+    /**
+     * 栈的特性：后入先出
+     * Time:
+     *  init：O(1)
+     *  push: O(n)，其中 n 是栈内元素的个数
+     *  pop: O(1)
+     *  top: O(1)
+     *  empty: O(1)
+     * Space: O(n)，其中 n 是栈内元素的个数。需要用两个队列存储栈内的元素
+     */
+    class MyStackV1 {
+        // 辅助入栈操作的辅助队列
+        Queue<Integer> tmpQ1;
+        // 存储栈内的元素
+        Queue<Integer> q2;
+
+        public MyStackV1() {
+            tmpQ1 = new LinkedList<>();
+            q2 = new LinkedList<>();
+        }
+
+        public void push(int x) {
+//        while (!q2.isEmpty()) {
+//            tmpQ1.offer(q2.poll());
+//        }
+//        q2.offer(x);
+//        while (!tmpQ1.isEmpty()) {
+//            q2.offer(tmpQ1.poll());
+//        }
+
+            tmpQ1.offer(x);
+            while (!q2.isEmpty()) {
+                tmpQ1.offer(q2.poll());
+            }
+            // 交换
+            swap(tmpQ1, q2);
+        }
+
+        private void swap(Queue<Integer> q1, Queue<Integer> q2) {
+            Queue<Integer> temp = q1;
+            this.tmpQ1 = q2;
+            this.q2 = temp;
+        }
+
+        public int pop() {
+            if (!q2.isEmpty()) {
+                return q2.poll();
+            }
+            return -1;
+        }
+
+        public int top() {
+            if (!q2.isEmpty()) {
+                return q2.peek();
+            }
+            return -1;
+        }
+
+        public boolean empty() {
+            return q2.isEmpty();
+        }
+    }
 }
