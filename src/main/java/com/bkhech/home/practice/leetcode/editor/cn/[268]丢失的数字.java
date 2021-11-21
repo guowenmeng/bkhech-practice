@@ -85,11 +85,11 @@ class Solution {
 			int pivot = nums[start];
 			int low = start, high = end;
 			while (low < high) {
-				while (low < high && nums[high] > pivot) {
+				while (low < high && nums[high] >= pivot) {
 					high--;
 				}
 				nums[low] = nums[high];
-				while (low < high && nums[low] < pivot) {
+				while (low < high && nums[low] <= pivot) {
 					low++;
 				}
 				nums[high] = nums[low];

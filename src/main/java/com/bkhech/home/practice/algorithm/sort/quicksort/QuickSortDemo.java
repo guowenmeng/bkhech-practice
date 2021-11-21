@@ -12,6 +12,7 @@ public class QuickSortDemo {
 
     public static void main(String[] args) {
         int[] arr = new int[]{0, 1, 6, 9, 2, 5, 3, 7, 4, 8};
+//        int[] arr = new int[]{1, 3, 2, 2, 5, 2, 3, 7};
         //调用快速排序算法
         quick(arr, 0, arr.length - 1);
         //打印排序的后结果，查看是否正确
@@ -49,14 +50,14 @@ public class QuickSortDemo {
                 //这个时候我们已经找定了开始位置和结束位置
 
                 //第一次是要拿高位和低位进行比较,如果高位比标准数字大，则高位则向前移动一位
-                while (low < high && arr[high] > pivot) {
+                while (low < high && arr[high] >= pivot) {
                     high--;
                 }
                 //当然了并不是所有高位数字都比低位大，如果比低位要小，则这个数字要覆盖低位的数字
                 arr[low] = arr[high];
 
                 //然后这个时候低位开始移动，如果低位比标准数字小，则低位的下标向后移动一位
-                while (low < high && arr[low] < pivot) {
+                while (low < high && arr[low] <= pivot) {
                     low++;
                 }
 
