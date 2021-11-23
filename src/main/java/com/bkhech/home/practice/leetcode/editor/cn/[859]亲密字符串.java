@@ -109,6 +109,10 @@ class BuddyStrings {
 //leetcode submit region end(Prohibit modification and deletion)
 
     /**
+     * 使得 s 和 goal 为亲密字符串条件：
+     * - 字符串 s 的长度与字符串 goal 的长度相等；
+     * - 存在 i != j，且满足 s[i]=goal[j] 以及 s[j]=goal[i]
+     *
      * Time: O(n)，其中 n 为字符串的长度。
      * Space: O(c)，其中 c = 26，需要常数个空间保存字符串的字符统计次数，我们统计所有小写字母的个数，因此 c = 26
      * @param s
@@ -116,11 +120,13 @@ class BuddyStrings {
      * @return
      */
     public boolean buddyStringsV2(String s, String goal) {
+        //长度不相等直接返回 false
         if (s.length() != goal.length()) {
             return false;
         }
 
         if (s.equals(goal)) {
+            // s == goal 时，s 存在两个或以上相同字符，则为 true
             int[] count = new int[26];
             for (int i = 0; i < s.length(); i++) {
                 int j = ++count[s.charAt(i) - 'a'];
@@ -129,6 +135,7 @@ class BuddyStrings {
                 }
             }
         } else {
+            // s != goal 时，在找打第二个不同位置时，不同位置的字符后，判断 s 与 goal 是否相同，若相同则为 true
             int i = -1;
             for (int j = 0; j < s.length(); j++) {
                 if (s.charAt(j) != goal.charAt(j)) {
