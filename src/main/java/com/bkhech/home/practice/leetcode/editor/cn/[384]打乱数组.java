@@ -51,7 +51,7 @@ import java.util.*;
  */
 class ShuffleAnArray{
      public static void main(String[] args) {
-         int[] nums = new int[]{1, 2, 3};
+         int[] nums = new int[]{1, 4, 3, 2, 5};
          final Solution solution = new ShuffleAnArray().new Solution(nums);
          final int[] shuffle = solution.shuffle();
          System.out.println(Arrays.toString(shuffle));
@@ -59,28 +59,50 @@ class ShuffleAnArray{
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-
-    private final int[] nums;
+    int[] nums;
+    int[] original;
 
     public Solution(int[] nums) {
         this.nums = nums;
+        this.original = new int[nums.length];
+        System.arraycopy(nums, 0, original, 0, nums.length);
     }
     
     public int[] reset() {
+        System.arraycopy(original, 0, nums, 0, original.length);
         return this.nums;
     }
     
     public int[] shuffle() {
-        List<Integer> numList = new ArrayList<>();
-        for (int n : nums) {
-            numList.add(n);
+        int[] shuffled = new int[nums.length];
+        List<Integer> list = new ArrayList<>(nums.length);
+        for (Integer n : nums) {
+            list.add(n);
         }
-        Collections.shuffle(numList);
-        int[] ret = new int[numList.size()];
-        for (int i = 0; i < numList.size(); i++) {
-            ret[i] = numList.get(i);
+
+        Random random = new Random();
+        for (int i = 0; i < nums.length; i++) {
+            int j = random.nextInt(list.size());
+            shuffled[i] = list.remove(j);
         }
-        return ret;
+        System.arraycopy(shuffled, 0, nums, 0, nums.length);
+        return nums;
+
+//        int[] tmp = new int[nums.length];
+//        List<Integer> data = new ArrayList<>(nums.length);
+//        for (Integer n : nums) {
+//            data.add(n);
+//        }
+//
+//        Random random = new Random();
+//        int i = 0;
+//        while (!data.isEmpty()) {
+//            int idx = random.nextInt(data.size());
+//            tmp[i] = data.get(idx);
+//            data.remove(idx);
+//            i++;
+//        }
+//        return tmp;
     }
 }
 
