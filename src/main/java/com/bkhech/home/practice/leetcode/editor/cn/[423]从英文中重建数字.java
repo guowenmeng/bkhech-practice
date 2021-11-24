@@ -33,62 +33,57 @@ package com.bkhech.home.practice.leetcode.editor.cn;
 import java.util.*;
 
 /**
- * TODO
+ * 从英文中重建数字
  * guowm
  * 2021-11-24 12:27:50
  */
 class ReconstructOriginalDigitsFromEnglish{
      public static void main(String[] args) {
          final Solution solution = new ReconstructOriginalDigitsFromEnglish().new Solution();
-         String s = "zerozero";
+         String s = "owoztneoer";
          final String ans = solution.originalDigits(s);
          System.out.println(ans);
+
+         //字符测试
+         char a = '0';//48
+         int b = a - 40;
+         System.out.println(b);//8
      }
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * Time：O(n)，其中 ∣n 是字符串 n 的长度。
+     * Space：O(Σ)，其中 Σ 表示字符集大小，当前 Σ 为所有在 0∼9 中出现的英文字母
+     * @param s
+     * @return
+     */
     public String originalDigits(String s) {
-        int[] c = new int[26];
+        Map<Character, Integer> c = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
-            c[s.charAt(i) - 'a']++;
+            char ch = s.charAt(i);
+            c.put(ch, c.getOrDefault(ch, 0) + 1);
         }
 
+        int[] cnt = new int[10];
+        cnt[0] = c.getOrDefault('z', 0);
+        cnt[2] = c.getOrDefault('w', 0);
+        cnt[4] = c.getOrDefault('u', 0);
+        cnt[6] = c.getOrDefault('x', 0);
+        cnt[8] = c.getOrDefault('g', 0);
+
+        cnt[3] = c.getOrDefault('h', 0) - cnt[8];
+        cnt[5] = c.getOrDefault('f', 0) - cnt[4];
+        cnt[7] = c.getOrDefault('s', 0) - cnt[6];
+
+        cnt[1] = c.getOrDefault('o', 0) - cnt[0] - cnt[2] - cnt[4];
+        cnt[9] = c.getOrDefault('i', 0) - cnt[5] - cnt[6] - cnt[8];
+
         StringBuilder ans = new StringBuilder();
-        Map<String, Integer> map = new LinkedHashMap<String, Integer>(10){
-            {
-                put("zero", 0);
-                put("one", 1);
-                put("two", 2);
-                put("three", 3);
-                put("four", 4);
-                put("five", 5);
-                put("six", 6);
-                put("seven", 7);
-                put("eight", 8);
-                put("nine", 9);
-            }
-        };
-        List<Integer> back = new ArrayList<>();
-        for (String d : map.keySet()) {
-            boolean flag = true;
-            while (flag) {
-                for (int i = 0; i < d.length(); i++) {
-                    if (c[d.charAt(i) - 'a'] != 0) {
-                        c[d.charAt(i) - 'a']--;
-                        back.add(d.charAt(i) - 'a');
-                    } else {
-                        break;
-                    }
-                }
-                if (back.size() != d.length()) {
-                    for (Integer b : back) {
-                        c[b]++;
-                    }
-                    flag = false;
-                } else {
-                    ans.append(map.get(d));
-                }
-                back.clear();
+        for (int i = 0; i < cnt.length; i++) {
+            for (int j = 0; j < cnt[i]; j++) {
+                // i + '0' 转化成字符
+                ans.append((char)(i + '0'));
             }
         }
         return ans.toString();
