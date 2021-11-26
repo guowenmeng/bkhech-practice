@@ -40,7 +40,7 @@ public class CreateBinaryTreeByArray {
         queue.offer(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            ans.add(node.value);
+            ans.add(node.val);
             if (node.left != null) {
                 queue.offer(node.left);
             }
