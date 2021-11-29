@@ -29,6 +29,7 @@ public class CreateBinaryTreeByArray {
 
     /**
      * 层序遍历二叉树
+     *
      * @param root
      * @param ans
      */
@@ -40,7 +41,7 @@ public class CreateBinaryTreeByArray {
         queue.offer(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            ans.add(node.value);
+            ans.add(node.val);
             if (node.left != null) {
                 queue.offer(node.left);
             }
@@ -53,47 +54,41 @@ public class CreateBinaryTreeByArray {
     /**
      * 根据层序遍历结果构建二叉树
      * createBinaryTree By LevelOrderTraversalResult(LOTR)
-     * @param input
+     * @param nums
      * @return
      */
-    public static TreeNode createBinaryTreeByLOTR(Integer[] input) {
-        int floor = 0, count = 0;
-        TreeNode[] treeNodes = new TreeNode[input.length];
-        while (input != null && count < input.length) {
-            int start = (int) Math.pow(2, floor) - 1;
-            int end = (int) Math.pow(2, floor + 1) - 1;
-            if (end > input.length) {
-                end = input.length;
-            }
-            for (int i = start; i < end; i++) {
-                if (input[i] != null) {
-                    treeNodes[i] = new TreeNode(input[i]);
-                } else {
-                    treeNodes[i] = null;
-                }
-                if (i > 0) {
-                    int parent = (i - 1) / 2;
-                    if (parent >= 0) {
-                        TreeNode pNode = treeNodes[parent];
-                        if (pNode != null) {
-                            if (i % 2 == 1) {
-                                pNode.left = treeNodes[i];
-                            } else {
-                                pNode.right = treeNodes[i];
-                            }
-                        }
-                    }
-                }
-                count++;
-            }
-            floor++;
+    public static TreeNode createBinaryTreeByLOTR(Integer[] nums) {
+        TreeNode root = null;
+        TreeNode point;
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (nums.length >= 1) {
+            root = new TreeNode(nums[0]);
+            queue.add(root);
         }
-        return treeNodes[0];
+        int i = 1;
+        while (i < nums.length) {
+            point = queue.poll();
+            if (null != nums[i]) {
+                point.left = new TreeNode(nums[i]);
+                queue.add(point.left);
+            }
+            i++;
+            if (i >= nums.length) {
+                break;
+            }
+            if (null != nums[i]) {
+                point.right = new TreeNode(nums[i]);
+                queue.add(point.right);
+            }
+            i++;
+        }
+        return root;
     }
 
     /**
      * 根据先序遍历结果构建二叉树
-     *  createBinaryTree By PreOrderTraversalResult(POTR)
+     * createBinaryTree By PreOrderTraversalResult(POTR)
+     *
      * @param inputList
      * @return
      */

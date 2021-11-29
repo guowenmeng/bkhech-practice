@@ -5,26 +5,26 @@ package com.bkhech.home.practice.algorithm.tree_metadata;
  * @date 2021/11/23
  */
 public class TreeNode {
-    public int value;
+    public int val;
     public TreeNode left;
     public TreeNode right;
 
-    public TreeNode(int value) {
-        this.value = value;
+    public TreeNode(int val) {
+        this.val = val;
     }
 
-    public TreeNode(int value, TreeNode left, TreeNode right) {
-        this.value = value;
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
         this.left = left;
         this.right = right;
     }
 
-    public int getValue() {
-        return value;
+    public int getVal() {
+        return val;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setVal(int val) {
+        this.val = val;
     }
 
     public TreeNode getLeft() {
@@ -46,7 +46,7 @@ public class TreeNode {
     @Override
     public String toString() {
         return "TreeNode{" +
-                "value=" + value +
+                "val=" + val +
                 ", left=" + left +
                 ", right=" + right +
                 '}';
