@@ -56,6 +56,12 @@ class NthDigit{
  
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * 时间复杂度：O(logn)
+     * 空间复杂度：O(1)
+     * @param n
+     * @return
+     */
     public int findNthDigit(int n) {
         int cur = 1, base = 9;
         while (n > cur * base) {
