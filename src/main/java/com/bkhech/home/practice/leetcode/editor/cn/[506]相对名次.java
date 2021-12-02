@@ -50,7 +50,7 @@ import java.util.Map;
 /**
  * 相对名次
  * guowm
- * 2021-12-02 21:34:34
+ * 2021-12-02 20:34:34
  */
 class RelativeRanks{
 	public static void main(String[] args) {
