@@ -82,7 +82,7 @@ class PowxN {
 		if (n == 0 || x == 1) {
 			return 1;
 		}
-
+		// 最小的负数的绝对值 比 最大的正数 更大，所以用long存储n
 		return n < 0 ? 1 / quickPow(x, -(long) n) : quickPow(x, n);
 	}
 
