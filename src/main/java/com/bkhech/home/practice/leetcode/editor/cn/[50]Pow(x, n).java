@@ -50,17 +50,43 @@ class PowxN {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        /**
+         * 快速幂 + 迭代
+         *  注意：二进制思维
+         * Time：O(logn)，即为对 n 进行二进制拆分的时间复杂度。
+         * Space：O(1)。
+         * @param x
+         * @param n
+         * @return
+         */
 		public double myPow(double x, int n) {
 			// 特殊情况
-			if (x == 0 || n == 1) {
-				return x;
-			}
 			if (n == 0 || x == 1) {
 				return 1;
 			}
-
-			return -1;
+			// 最小的负数的绝对值 比 最大的正数 更大，所以用long存储n
+            long ln = n;
+            return n < 0 ? 1 / quickPowIteration(x, -ln) : quickPowIteration(x, ln);
 		}
+		private double quickPowIteration(double x, long n) {
+            double ans = 1.0;
+            // 贡献的初始值为 x
+            double xContribute = x;
+            // 在对 n 进行二进制拆分的同时计算答案
+            while (n > 0) {
+                if (n % 2 == 1) {
+                    // 如果 N 二进制表示的最低位为 1，那么需要计入贡献
+                    ans *= xContribute;
+                }
+                // 舍弃 n 二进制表示的最低位，这样我们每次只要判断最低位即可
+                // n /= 2;
+                n = n >> 1;
+                // 将贡献不断地平方
+                xContribute *= xContribute;
+            }
+            return ans;
+        }
+
 	}
 //leetcode submit region end(Prohibit modification and deletion)
 
@@ -83,7 +109,8 @@ class PowxN {
 			return 1;
 		}
 		// 最小的负数的绝对值 比 最大的正数 更大，所以用long存储n
-		return n < 0 ? 1 / quickPow(x, -(long) n) : quickPow(x, n);
+        long ln = n;
+		return n < 0 ? 1 / quickPow(x, -ln) : quickPow(x, ln);
 	}
 
 	private double quickPow(double x, long n) {
