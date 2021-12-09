@@ -105,17 +105,17 @@ class Solution {
 		for (int i = 0; i < score.length; i++) {
 			map.put(score[i], String.valueOf(i));
 		}
-		int[] sortScore = quickSort(score, 0, score.length - 1);
+		quickSort(score, 0, score.length - 1);
 
 		int rank = 0;
-		for (int i = sortScore.length - 1; i >= 0 ; i--) {
-			map.put(sortScore[i], rank < 3 ? desc[rank] : String.valueOf(rank + 1));
+		for (int i = score.length - 1; i >= 0 ; i--) {
+			map.put(score[i], rank < 3 ? desc[rank] : String.valueOf(rank + 1));
 			rank++;
 		}
 		return map.values().toArray(new String[0]);
 	}
 
-	private int[] quickSort(int[] score, int start, int end) {
+	private void quickSort(int[] score, int start, int end) {
 		if (start < end) {
 			int pivot = score[start];
 			int low = start, high = end;
@@ -134,6 +134,5 @@ class Solution {
 			quickSort(score, start, low - 1);
 			quickSort(score, low + 1, end);
 		}
-		return score;
 	}
 }
