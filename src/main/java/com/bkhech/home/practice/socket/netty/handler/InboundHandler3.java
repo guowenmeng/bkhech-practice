@@ -1,7 +1,8 @@
-package com.bkhech.home.practice.netty.netty.handler;
+package com.bkhech.home.practice.socket.netty.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -10,42 +11,42 @@ import lombok.extern.slf4j.Slf4j;
  * @description
  */
 @Slf4j
-public class InboundHandler2 extends ChannelInboundHandlerAdapter {
+public class InboundHandler3 extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        log.info("channelRegistered B");
+        log.info("channelRegistered C");
         super.channelRegistered(ctx);
     }
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-        log.info("channelUnregistered B");
+        log.info("channelUnregistered C");
         super.channelUnregistered(ctx);
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        log.info("channelActive B");
+        log.info("channelActive C");
         super.channelActive(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        log.info("channelInactive B");
+        log.info("channelInactive C");
         super.channelInactive(ctx);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("channelRead B: msg {}", msg);
-        int i = 1/0;
+        System.out.println("channelRead C: " + ctx.channel().attr(AttributeKey.valueOf("clientId")));
+        log.info("channelRead C: msg {}", msg);
         super.channelRead(ctx, msg);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        log.info("exceptionCaught B: errorMsg {}", cause.getMessage());
-        super.exceptionCaught(ctx, cause);
+        log.info("exceptionCaught C: errorMsg {}", cause.getMessage());
         ctx.channel().close();
+        super.exceptionCaught(ctx, cause);
     }
 }

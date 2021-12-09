@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.netty.netty.handler;
+package com.bkhech.home.practice.socket.netty.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

@@ -1,8 +1,8 @@
-package com.bkhech.home.practice.netty.netty;
+package com.bkhech.home.practice.socket.netty;
 
-import com.bkhech.home.practice.netty.netty.handler.InboundHandler1;
-import com.bkhech.home.practice.netty.netty.handler.InboundHandler2;
-import com.bkhech.home.practice.netty.netty.handler.InboundHandler3;
+import com.bkhech.home.practice.socket.netty.handler.InboundHandler1;
+import com.bkhech.home.practice.socket.netty.handler.InboundHandler2;
+import com.bkhech.home.practice.socket.netty.handler.InboundHandler3;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -12,9 +12,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 

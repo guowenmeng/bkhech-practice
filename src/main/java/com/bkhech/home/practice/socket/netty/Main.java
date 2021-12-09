@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.netty.netty;
+package com.bkhech.home.practice.socket.netty;
 
 import io.netty.channel.Channel;
 import io.netty.channel.socket.SocketChannel;
