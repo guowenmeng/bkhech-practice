@@ -8,8 +8,8 @@ import java.lang.annotation.Annotation;
  * @description
  */
 public class OrderTypeImpl implements OrderType {
-    private String source;
-    private String payType;
+    private final String source;
+    private final String payType;
 
     public OrderTypeImpl(String source, String payType) {
         this.source = source;

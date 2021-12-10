@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class NettyClient {
 
-    private String host;
-    private int port;
+    private final String host;
+    private final int port;
     private SocketChannel channel;
 
     public NettyClient(int port) {

@@ -34,13 +34,13 @@ public class ReflectionDemo {
 
     }
 
-    public void testMethodPublic(){};
+    public void testMethodPublic(){}
 
-    protected void testMethodProtected(){};
+    protected void testMethodProtected(){}
 
-    private void testMethodPrivate(){};
+    private void testMethodPrivate(){}
 
-    void testMethodDefault(){};
+    void testMethodDefault(){}
 
     private interface InnerInterface {
 

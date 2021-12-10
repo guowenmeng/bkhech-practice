@@ -17,8 +17,8 @@ public class AtomicIntegerFieldUpdaterDemo {
     /**
      * 创建原子更新器，并设置需要更新的对象类和对象的属性
      */
-    private static AtomicIntegerFieldUpdater<User> integerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(User.class, "old");
-    private static AtomicReferenceFieldUpdater<ReferenceUser, Integer> referenceFieldUpdater = AtomicReferenceFieldUpdater.newUpdater(ReferenceUser.class, Integer.class, "old");
+    private static final AtomicIntegerFieldUpdater<User> integerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(User.class, "old");
+    private static final AtomicReferenceFieldUpdater<ReferenceUser, Integer> referenceFieldUpdater = AtomicReferenceFieldUpdater.newUpdater(ReferenceUser.class, Integer.class, "old");
 
     public static void main(String[] args) {
 
@@ -41,7 +41,7 @@ public class AtomicIntegerFieldUpdaterDemo {
     }
 
     public static class User {
-        private String name;
+        private final String name;
         public volatile int old;
 
         public User(String name, int old) {
@@ -59,7 +59,7 @@ public class AtomicIntegerFieldUpdaterDemo {
     }
 
     public static class ReferenceUser {
-        private String name;
+        private final String name;
         public volatile Integer old;
 
         public ReferenceUser(String name, Integer old) {

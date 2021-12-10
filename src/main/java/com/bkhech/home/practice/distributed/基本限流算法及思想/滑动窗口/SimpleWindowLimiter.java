@@ -21,14 +21,14 @@ import java.util.concurrent.atomic.AtomicLong;
 @Slf4j
 public class SimpleWindowLimiter {
 
-    private volatile LoadingCache<Long, AtomicLong> counter = CacheBuilder.newBuilder()
+    private final LoadingCache<Long, AtomicLong> counter = CacheBuilder.newBuilder()
             .expireAfterWrite(10, TimeUnit.SECONDS)
             .build(new CacheLoader<Long, AtomicLong>() {
                 @Override
                 public AtomicLong load(Long seconds) throws Exception {
                     return new AtomicLong(0L);
                 }
-            });;
+            });
 
     /**
      * 限流方法（滑动时间算法/时间窗口算法）

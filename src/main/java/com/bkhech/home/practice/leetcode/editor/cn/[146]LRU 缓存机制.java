@@ -100,10 +100,11 @@ class LruCache{
         }
     }
 
-    private Map<Integer, DoubleLinkedNode> cache = new HashMap<>();
+    private final Map<Integer, DoubleLinkedNode> cache = new HashMap<>();
     private int size;
-    private int capacity;
-    private DoubleLinkedNode head, tail;
+    private final int capacity;
+    private final DoubleLinkedNode head;
+        private final DoubleLinkedNode tail;
 
     public LRUCache(int capacity) {
         this.size = 0;
