@@ -14,4 +14,5 @@ import java.lang.annotation.*;
 @Documented
 @Qualifier
 public @interface Grp {
+    String value() default "";
 }
