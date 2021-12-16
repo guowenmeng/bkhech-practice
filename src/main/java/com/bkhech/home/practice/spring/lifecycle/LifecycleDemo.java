@@ -10,17 +10,21 @@ import javax.annotation.PostConstruct;
 /**
  * spring lifecycle demo
  * BeanNameAware > BeanClassLoaderAware > BeanFactoryAware > BeanPostProcessor.postProcessBeforeInitialization > @PostConstruct > InitializingBean > SmartInitializingSingleton > BeanPostProcessor.postProcessAfterInitialization > DisposableBean
- *                        各种 Aware                        >
- * LifecycleDemo constructor
- * LifecycleDemo setBeanName---lifecycleDemo
- * LifecycleDemo setBeanClassLoader--sun.misc.Launcher$AppClassLoader@18b4aac2
- * LifecycleDemo setBeanFactory
- * LifecycleDemo postProcessBeforeInitialization----lifecycleDemo
- * LifecycleDemo @PostConstruct
- * LifecycleDemo afterPropertiesSet
- * LifecycleDemo initMethod
- * LifecycleDemo postProcessAfterInitialization----lifecycleDemo
- * LifecycleDemo afterSingletonsInstantiated
+ * (     ↑               各种 Aware               ↑         )
+ * 1.LifecycleDemoBeanPostProcessor constructor
+ * 2.LifecycleDemo constructor
+ * 3.LifecycleDemo setBeanName---lifecycleDemo
+ * 4.LifecycleDemo setBeanClassLoader--sun.misc.Launcher$AppClassLoader@18b4aac2
+ * 5.LifecycleDemo setBeanFactory
+ * 6.LifecycleDemo postProcessBeforeInitialization----lifecycleDemo
+ * 7.LifecycleDemo @PostConstruct
+ * 8.LifecycleDemo afterPropertiesSet
+ * 9.LifecycleDemo initMethod
+ * 10.LifecycleDemo postProcessAfterInitialization----lifecycleDemo
+ * 11.LifecycleDemo afterSingletonsInstantiated
+ *
+ * 说明：
+ * 其中第 1 和第 2 步为对象实例化过程，第 6 步为对象初始化前置处理器
  *
  * @author guowm
  * @date 2021/5/14
