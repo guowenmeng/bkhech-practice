@@ -28,7 +28,7 @@ import javax.annotation.PostConstruct;
  * LifecycleDemoBeanPostProcessor constructor
  * LifecycleDemoBeanPostProcessor2 constructor
  *
- * ------------------------------ 所有单例 bean 实例化, 回调初始化方法 开始 -------------------------------------------
+ * ------------------------------ 所有非抽象类、非延迟初始化的单例 bean 实例化, 回调初始化方法 开始 -------------------------------------------
  * ####################### 单例 bean1 实例化开始 #######################
  * LifecycleDemo2 constructor
  * LifecycleDemo2 setBeanName---lifecycleDemo2
@@ -60,7 +60,7 @@ import javax.annotation.PostConstruct;
  * LifecycleDemo initMethod
  * LifecycleDemoBeanPostProcessor postProcessAfterInitialization----lifecycleDemo
  * LifecycleDemoBeanPostProcessor2 postProcessAfterInitialization----lifecycleDemo
- * ------------------------------ 所有单例 bean 实例化, 回调初始化方法 结束 -------------------------------------------
+ * ------------------------------ 所有所有非抽象类、非延迟初始化的单例 bean 实例化, 回调初始化方法 结束 -------------------------------------------
 
  * ------------------------------ 在所有单例 Bean 都初始化完成后调用 ------------------------------------
  * LifecycleDemo2 afterSingletonsInstantiated
