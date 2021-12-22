@@ -106,6 +106,14 @@ public class LifecycleDemo implements
 
     private String name = "dddd";
 
+    static {
+        System.out.println("LifecycleDemo static");
+    }
+
+    {
+        System.out.println("LifecycleDemo block");
+    }
+
     public LifecycleDemo() {
         this.name = "bkhech";
         System.out.println("LifecycleDemo constructor");

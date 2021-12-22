@@ -1,6 +1,7 @@
 package com.bkhech.home.practice.spring.lifecycle;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
@@ -27,6 +28,10 @@ public class LifecycleDemoBeanFactoryPostProcessor implements BeanFactoryPostPro
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        final String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            final BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanDefinitionName);
+        }
         System.out.println("LifecycleDemoBeanFactoryPostProcessor postProcessBeanFactory");
     }
 }
