@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * ConcurrentHashMap 1.7
+ *
  * @author guowm
  * @date 2021/12/15
  */
@@ -79,8 +80,8 @@ public class ConcurrentHashMap1_7<K, V> {
      * Sets the ith element of given table, with volatile write
      * semantics. (See above about use of putOrderedObject.)
      */
-    static final <K,V> void setEntryAt(HashEntry<K,V>[] tab, int i,
-                                       HashEntry<K,V> e) {
+    static final <K, V> void setEntryAt(HashEntry<K, V>[] tab, int i,
+                                        HashEntry<K, V> e) {
         UNSAFE.putOrderedObject(tab, i, e);
     }
 
