@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.designpattern.chain_of_responsibility;
+package com.bkhech.home.practice.designpattern.chain_of_responsibility.core;
 
 /**
  * 从请求体中处理
@@ -17,7 +17,7 @@ public class RequestBodyFilter implements ValidationParamFilter {
     public void doFilter(ApiSignContext apiSignContext, FilterChain filterChain) {
         //业务处理
         System.out.println("业务处理：" + this.getClass());
-        filterChain.doFilter(apiSignContext, filterChain);
+        filterChain.doFilter(apiSignContext);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.designpattern.chain_of_responsibility;
+package com.bkhech.home.practice.designpattern.chain_of_responsibility.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;

@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.designpattern.chain_of_responsibility;
+package com.bkhech.home.practice.designpattern.chain_of_responsibility.core;
 
 /**
  * 从请求参数中处理
@@ -18,7 +18,7 @@ public class RequestParameterFilter implements ValidationParamFilter {
         // 业务处理
         System.out.println("业务处理：" + this.getClass().getName());
 
-        filterChain.doFilter(apiSignContext, filterChain);
+        filterChain.doFilter(apiSignContext);
     }
 
 }

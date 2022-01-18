@@ -1,5 +1,6 @@
-package com.bkhech.home.practice.designpattern.chain_of_responsibility;
+package com.bkhech.home.practice.designpattern.chain_of_responsibility.core;
 
+import com.bkhech.home.practice.designpattern.chain_of_responsibility.core.RequestMetaData;
 import lombok.Builder;
 import lombok.Data;
 
