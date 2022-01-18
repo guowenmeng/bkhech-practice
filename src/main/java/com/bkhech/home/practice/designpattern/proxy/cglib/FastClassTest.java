@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.designpattern.proxy;
+package com.bkhech.home.practice.designpattern.proxy.cglib;
 
 /**
  * @author guowm

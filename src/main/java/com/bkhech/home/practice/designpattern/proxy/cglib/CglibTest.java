@@ -1,5 +1,6 @@
-package com.bkhech.home.practice.designpattern.proxy;
+package com.bkhech.home.practice.designpattern.proxy.cglib;
 
+import com.bkhech.home.practice.designpattern.proxy.ProxyPerson;
 import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 

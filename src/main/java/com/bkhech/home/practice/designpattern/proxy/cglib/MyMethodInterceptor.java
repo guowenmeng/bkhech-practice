@@ -1,4 +1,4 @@
-package com.bkhech.home.practice.designpattern.proxy;
+package com.bkhech.home.practice.designpattern.proxy.cglib;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
