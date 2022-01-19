@@ -4,6 +4,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,13 +14,19 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class CacheBuilderDemo {
 
-    private LoadingCache<Long, AtomicLong> counter =
-            CacheBuilder.newBuilder()
-                    .expireAfterWrite(10, TimeUnit.SECONDS)
-                    .build(new CacheLoader<Long, AtomicLong>() {
-                        @Override
-                        public AtomicLong load(Long seconds) throws Exception {
-                            return new AtomicLong(0);
-                        }
-                    });
+    private final LoadingCache<String, AtomicLong> limiterCache;
+
+    public CacheBuilderDemo() {
+        limiterCache = CacheBuilder.newBuilder()
+                .maximumSize(50)
+                .weakValues()
+                .expireAfterAccess(Duration.ofHours(1))
+                .removalListener(notification -> System.out.println(notification.getValue()))
+                .build(new CacheLoader<String, AtomicLong>() {
+                    @Override
+                    public AtomicLong load(String key) throws Exception {
+                        return new AtomicLong();
+                    }
+                });
+    }
 }
