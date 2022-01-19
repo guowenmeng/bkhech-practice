@@ -111,9 +111,9 @@ public class ConcurrentHashMapDemo {
         final int hash;
         final K key;
         volatile V value;
-        volatile ConcurrentHashMap1_7.HashEntry<K, V> next;
+        volatile HashEntry<K, V> next;
 
-        HashEntry(int hash, K key, V value, ConcurrentHashMap1_7.HashEntry<K, V> next) {
+        HashEntry(int hash, K key, V value, HashEntry<K, V> next) {
             this.hash = hash;
             this.key = key;
             this.value = value;
@@ -124,7 +124,7 @@ public class ConcurrentHashMapDemo {
          * Sets next field with volatile write semantics.  (See above
          * about use of putOrderedObject.)
          */
-        final void setNext(ConcurrentHashMap1_7.HashEntry<K, V> n) {
+        final void setNext(HashEntry<K, V> n) {
             UNSAFE.putOrderedObject(this, nextOffset, n);
         }
 
@@ -135,7 +135,7 @@ public class ConcurrentHashMapDemo {
         static {
             try {
                 UNSAFE = Unsafe.getUnsafe();
-                Class k = ConcurrentHashMap1_7.HashEntry.class;
+                Class k = HashEntry.class;
                 nextOffset = UNSAFE.objectFieldOffset
                         (k.getDeclaredField("next"));
             } catch (Exception e) {
