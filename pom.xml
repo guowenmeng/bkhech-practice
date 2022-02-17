@@ -160,6 +160,14 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+
+		<!--OpenJDK官方提供的JOL(Java Object Layout)工具，我们即可很方便分析、了解一个Java对象在内存当中的具体布局情况-->
+		<dependency>
+			<groupId>org.openjdk.jol</groupId>
+			<artifactId>jol-core</artifactId>
+			<version>0.16</version>
+		</dependency>
+
     </dependencies>
 
 	<build>
