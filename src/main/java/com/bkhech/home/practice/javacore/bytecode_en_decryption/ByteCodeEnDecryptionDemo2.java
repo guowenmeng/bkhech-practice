@@ -1,21 +1,40 @@
 package com.bkhech.home.practice.javacore.bytecode_en_decryption;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.util.Base64Utils;
+
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 对字节码加密解码 样例
- *   加密的时候按照指定算法对字节码进行运算，解密的时候进行逆运算
+ * 加密的时候按照指定算法对字节码进行运算，解密的时候进行逆运算
  *
  * @author guowm
  * @date 2022/2/16
  */
 public class ByteCodeEnDecryptionDemo2 {
-    final static int secretKey = 123;
+    final static long secretKey = 134234349723497L;
     final static String userDir = System.getProperty("user.dir");
 
     public static void main(String[] args) throws IOException {
+
+        final JSONObject jsonObject = new JSONObject();
+        jsonObject.put("gameId", "9895614");
+        jsonObject.put("type", "GOLD_FINGER");
+        jsonObject.put("stage", "1");
+        final String bizData = JSON.toJSONString(jsonObject);
+        final byte[] encryptionBefore = bizData.getBytes(StandardCharsets.UTF_8);
+        encryptionByte(encryptionBefore);
+        String encryption = Base64Utils.encodeToString(encryptionBefore);
+        System.out.println(encryption);
+
+        byte[] requestBodyBytes = Base64Utils.decodeFromString(encryption);
+        decryptionByte(requestBodyBytes);
+        System.out.println(new String(requestBodyBytes));
 //        testJpg();
-        testTxt();
+//        testTxt();
     }
 
     private static void testJpg() throws IOException {
@@ -87,12 +106,13 @@ public class ByteCodeEnDecryptionDemo2 {
 
     /**
      * 加密
+     *
      * @param buf
      */
     private static void encryptionByte(byte[] buf) {
-        int key = secretKey % 255;
+        long key = secretKey % 255;
         for (int i = 0; i < buf.length; ++i) {
-            int c = buf[i];
+            long c = buf[i];
             c += key;
             if (c > 255) {
                 c -= 256;
@@ -103,12 +123,13 @@ public class ByteCodeEnDecryptionDemo2 {
 
     /**
      * 解密
+     *
      * @param buf
      */
     private static void decryptionByte(byte[] buf) {
-        int key = secretKey % 255;
+        long key = secretKey % 255;
         for (int i = 0; i < buf.length; ++i) {
-            int c = (byte) (buf[i] ^ 0xff);
+            long c = buf[i] ^ 0xff;
             c = c >= key ? c - key : 256 + c - key;
             buf[i] = (byte) c;
         }

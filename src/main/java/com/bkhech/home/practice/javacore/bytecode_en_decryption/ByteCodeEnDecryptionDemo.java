@@ -10,7 +10,7 @@ import java.io.*;
  * @date 2022/2/16
  */
 public class ByteCodeEnDecryptionDemo {
-    final static int secretKey = 123;
+    final static long secretKey = 123;
     final static String userDir = System.getProperty("user.dir");
 
     public static void main(String[] args) throws IOException {
@@ -90,7 +90,7 @@ public class ByteCodeEnDecryptionDemo {
      * @param buf
      */
     private static void encryptionByte(byte[] buf) {
-        int key = secretKey % 255;
+        long key = secretKey % 255;
         for (int i = 0; i < buf.length; ++i) {
             buf[i] = (byte) (buf[i] ^ key);
         }
@@ -101,7 +101,7 @@ public class ByteCodeEnDecryptionDemo {
      * @param buf
      */
     private static void decryptionByte(byte[] buf) {
-        int key = secretKey % 255;
+        long key = secretKey % 255;
         for (int i = 0; i < buf.length; ++i) {
             buf[i] = (byte) (buf[i] ^ key);
         }
