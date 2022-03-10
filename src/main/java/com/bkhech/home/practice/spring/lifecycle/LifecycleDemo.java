@@ -14,8 +14,9 @@ import javax.annotation.PostConstruct;
  *
  *
  * spring lifecycle demo
- *BeanFactoryPostProcessor              BeanNameAware > BeanClassLoaderAware > BeanFactoryAware > BeanPostProcessor.postProcessBeforeInitialization > @PostConstruct > InitializingBean > SmartInitializingSingleton > BeanPostProcessor.postProcessAfterInitialization > DisposableBean
- *              (     ↑               各种 Aware               ↑         )
+ *                             (----↓----------------------------------------------------------------------------当前过程是循环执行的，有多少个被 spring 管理的类，就会执行多少次-----------------------------------------------------↓-------)
+ *BeanFactoryPostProcessor  >  BeanNameAware  >  BeanClassLoaderAware  >  BeanFactoryAware > BeanPostProcessor.postProcessBeforeInitialization > @PostConstruct > InitializingBean > BeanPostProcessor.postProcessAfterInitialization > SmartInitializingSingleton > DisposableBean
+ *                             (     ↑                各种 Aware                ↑         )
  *
  * --------- BeanFactoryPostProcessor 实例化 ---------------------------- 在所有 bean 实例化之前执行 -----------
  * LifecycleDemoBeanFactoryPostProcessor2 constructor
@@ -46,6 +47,8 @@ import javax.annotation.PostConstruct;
  * LifecycleDemoBeanPostProcessor2 postProcessAfterInitialization----lifecycleDemo2
  *
  * ####################### 单例 bean2 实例化开始 #######################
+ * LifecycleDemo static
+ * LifecycleDemo block
  * LifecycleDemo constructor
  * LifecycleDemo setBeanName---lifecycleDemo
  * LifecycleDemo setBeanClassLoader
@@ -88,9 +91,12 @@ import javax.annotation.PostConstruct;
  * 其中：
  * 第 1 步为实例化过程（jvm 层面的实例化概念），
  * 第 6 和 7 步为容器对象初始化方法回调前置处理器（解释：此时表示的是 spring 层面对象的初始化方法，
- *          特指：Initialization，InitMethod, @PostConstruct这些初始化方法，容易和 jvm 层面的对象初始化搞混）,
+ *          特指：Initialization，InitMethod, @PostConstruct这些初始化方法，别和 jvm 层面的对象初始化搞混）,
+ *          针对 BeanPostProcessor，有多少实现了 BeanPostProcessor 子类，每个 bean 类在进行实例化的时候就会回调多少次
  * 第 8、9、10 步是容器对象初始化方法（spring 层面）回调
  * 第 11 和 12 步为容器对象初始化方法回调后置处理器
+ *
+ * 注意：当前过程是循环执行的，有多少个被 spring 管理的类，就会执行多少次。
  *
  * @author guowm
  * @date 2021/5/14
