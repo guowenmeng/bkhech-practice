@@ -37,7 +37,7 @@ public class ExecutorsTest {
 
     static class TaskRunnale implements Runnable {
 
-        private String name;
+        private final String name;
 
         public TaskRunnale(String name) {
             this.name = name;
@@ -50,7 +50,7 @@ public class ExecutorsTest {
 
     static class TaskCallable implements Callable<String> {
 
-        private String name;
+        private final String name;
 
         public TaskCallable(String name) {
             this.name = name;

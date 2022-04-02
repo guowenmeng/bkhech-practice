@@ -17,24 +17,24 @@ AtomicMarkableReference：带版本戳的原子引用类型，版本戳为boolea
 ```java
 public class AtomicStampedReferenceDemo {
 
-    private static Long var = new Long(1);
+    private static final Long var = new Long(1);
 
     public static void main(String[] args) {
-        AtomicStampedReference<Long> referenceDemo = new AtomicStampedReference(var,1);
-        System.out.println("now value:"+referenceDemo.getReference().intValue());
+        AtomicStampedReference<Long> referenceDemo = new AtomicStampedReference(var, 1);
+        System.out.println("now value:" + referenceDemo.getReference().intValue());
         int stamp = referenceDemo.getStamp();
-        System.out.println("now stamp:"+stamp);
+        System.out.println("now stamp:" + stamp);
         boolean b = referenceDemo.compareAndSet(var, new Long(2), stamp, stamp + 1);
-        if(b){
+        if (b) {
             System.out.println("success set value...");
-            System.out.println("now value:"+referenceDemo.getReference().intValue());
+            System.out.println("now value:" + referenceDemo.getReference().intValue());
             stamp = referenceDemo.getStamp();
-            System.out.println("now stamp:"+stamp);
-        }else {
+            System.out.println("now stamp:" + stamp);
+        } else {
             System.out.println("failed set value...");
-            System.out.println("now value:"+referenceDemo.getReference().intValue());
+            System.out.println("now value:" + referenceDemo.getReference().intValue());
             stamp = referenceDemo.getStamp();
-            System.out.println("now stamp:"+stamp);
+            System.out.println("now stamp:" + stamp);
         }
     }
 

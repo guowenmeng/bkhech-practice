@@ -115,9 +115,7 @@ class WordDictionary {
         if (Character.isLetter(ch)) {
             int childIndex = ch - 'a';
             Trie child = node.getChildren()[childIndex];
-            if (child != null && dfs(word, index + 1, child)) {
-                return true;
-            }
+            return child != null && dfs(word, index + 1, child);
         } else {//当前字符是点号（.），由于点号可以表示任何字母，因此需要对当前结点的所有非空子节点继续搜索下一个字符
             for (int i = 0; i < 26; i++) {
                 Trie child = node.getChildren()[i];
@@ -131,7 +129,7 @@ class WordDictionary {
 
 
     class Trie {
-        private Trie[] children;
+        private final Trie[] children;
         private boolean isEnd;
         public Trie() {
             children = new Trie[26];

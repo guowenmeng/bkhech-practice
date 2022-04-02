@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class User {
 
-    private static int c = 20;
-    private int b = 20;
-    private static int a;
+    private static final int c = 20;
+    private final int b = 20;
+    private static final int a;
 
     private String name;
     private String phone;

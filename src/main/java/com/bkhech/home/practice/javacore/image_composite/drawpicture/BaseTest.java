@@ -54,8 +54,8 @@ public class BaseTest {
         //折线
         int polyX = ovalX + 40;
         int polyY = ovalY + 45;
-        int xPoints[] = new int[]{polyX, polyX + 20, polyX + 260, polyX + 260, polyX + 20};
-        int yPoints[] = new int[]{polyY, polyY - 35, polyY - 35, polyY + 35, polyY + 35};
+        int[] xPoints = new int[]{polyX, polyX + 20, polyX + 260, polyX + 260, polyX + 20};
+        int[] yPoints = new int[]{polyY, polyY - 35, polyY - 35, polyY + 35, polyY + 35};
         int nPoints = 5;
 
         //邀请语

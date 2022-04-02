@@ -8,7 +8,9 @@ import com.bkhech.home.practice.javacore.core.reflection.inherited_anno.UnOrInhe
 import com.bkhech.home.practice.javacore.core.reflection.inherited_anno.UnheritableAn;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -24,8 +26,12 @@ public class ReflectionDemo {
 //        arrayInstanceDemo();
 //        classDemo();
 //        annotationDemo();
-        methodDemo();
+//        methodDemo();
+        fieldDemo();
     }
+
+    private static String shareField;
+    private String field;
 
     @TestAn("ReflectionDemo#testMethod")
     @RepeatAn()
@@ -34,13 +40,13 @@ public class ReflectionDemo {
 
     }
 
-    public void testMethodPublic(){};
+    public void testMethodPublic(){}
 
-    protected void testMethodProtected(){};
+    protected void testMethodProtected(){}
 
-    private void testMethodPrivate(){};
+    private void testMethodPrivate(){}
 
-    void testMethodDefault(){};
+    void testMethodDefault(){}
 
     private interface InnerInterface {
 
@@ -184,5 +190,38 @@ public class ReflectionDemo {
         Arrays.stream(reflectionDemoClass.getDeclaredMethods()).forEach(System.out::println);
         System.out.println("------------getEnclosingMethod-----啥意思？？？---------");
         System.out.println(reflectionDemoClass.getEnclosingMethod());
+    }
+
+    /**
+     * 属性样例
+     * 注意：
+     * 字段不是静态字段的话,要传入反射类的对象。如果传 null 是会报 java.lang.NullPointerException，
+     * 但是如果字段是静态字段的话，传入任何对象都是可以的, 包括 null
+     */
+    private static void fieldDemo() {
+        final ReflectionDemo reflectionDemo = new ReflectionDemo();
+        ReflectionDemo.shareField = "aa";
+        reflectionDemo.field = "bb";
+
+        final Class<ReflectionDemo> reflectionDemoClass = ReflectionDemo.class;
+        final Field[] declaredFields = reflectionDemoClass.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            try {
+                Object fieldValue = null;
+                final int modifiers = declaredField.getModifiers();
+                if (Modifier.isStatic(modifiers)) {
+//                    fieldValue = declaredField.get(reflectionDemo); // 静态方法，执行这样用也没问题
+                    fieldValue = declaredField.get(null);
+                } else {
+//                    fieldValue = declaredField.get(null); // 非静态方法，空指针
+                    fieldValue = declaredField.get(reflectionDemo);
+                }
+                System.out.println(fieldValue);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }

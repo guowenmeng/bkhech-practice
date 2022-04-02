@@ -13,11 +13,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class SlidingTimeWindow {
     //一个时间窗口，单位是毫秒
-    private long timeWindow;
+    private final long timeWindow;
     //一个时间窗口分割多少块
-    private int slot;
+    private final int slot;
     //一个时间窗口限制的次数(在一个完整窗口期内允许通过的最大阈值)
-    private long threshold;
+    private final long threshold;
     //最小单元格的时间长度，单位是毫秒
     //每个slot的时间段
     private long slotTime;

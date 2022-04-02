@@ -17,8 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2021/3/1
  */
 public class FairAndUnfairDemo {
-    private static Lock fairLock = new ReentrantLockCustom(true);
-    private static Lock unfairLock = new ReentrantLockCustom(false);
+    private static final Lock fairLock = new ReentrantLockCustom(true);
+    private static final Lock unfairLock = new ReentrantLockCustom(false);
 
     /**
      * i: 0, Locked by: 0, Waiting by: [1, 2, 3, 4]
@@ -73,7 +73,7 @@ public class FairAndUnfairDemo {
     }
 
     private static class Job implements Runnable {
-        private Lock lock;
+        private final Lock lock;
 
         public Job(Lock lock) {
             this.lock = lock;
@@ -87,7 +87,7 @@ public class FairAndUnfairDemo {
                 lock.lock();
                 try {
                     Thread.sleep(1000);
-                    System.out.printf("i: %s, Locked by: %s, Waiting by: %s \n", i, Thread.currentThread().getName(), ReentrantLockCustom.class.cast(lock).getQueuedThreads());
+                    System.out.printf("i: %s, Locked by: %s, Waiting by: %s \n", i, Thread.currentThread().getName(), ((ReentrantLockCustom) lock).getQueuedThreads());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

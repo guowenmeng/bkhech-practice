@@ -16,7 +16,7 @@ public class InputStreamTest {
     public String readInputStreamToString(InputStream inStream) throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
         StringBuffer sb = new StringBuffer();
-        String temp = new String("");
+        String temp = "";
         while ((temp = reader.readLine()) != null) {
             sb.append(temp);
         }

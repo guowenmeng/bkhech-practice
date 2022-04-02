@@ -50,7 +50,7 @@ public class LinkedMyQueue<T> implements MyQueue<T> {
     /**
      * 队列的大小
      */
-    private AtomicInteger size = new AtomicInteger(0);
+    private final AtomicInteger size = new AtomicInteger(0);
 
     /**
      * 容量
@@ -60,12 +60,12 @@ public class LinkedMyQueue<T> implements MyQueue<T> {
     /**
      * 放数据锁
      */
-    private ReentrantLock putLock = new ReentrantLock();
+    private final ReentrantLock putLock = new ReentrantLock();
 
     /**
      * 拿数据锁
      */
-    private ReentrantLock takeLock = new ReentrantLock();
+    private final ReentrantLock takeLock = new ReentrantLock();
 
     /**
      * 无参构造器，默认最大容量是 Integer.MAX_VALUE

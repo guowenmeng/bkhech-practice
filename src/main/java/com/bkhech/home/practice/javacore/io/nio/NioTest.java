@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class NioTest {
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         //一次读取的字节长度
         int bufSize = 1000;

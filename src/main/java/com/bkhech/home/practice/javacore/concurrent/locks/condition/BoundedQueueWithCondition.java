@@ -15,18 +15,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class BoundedQueueWithCondition<T> {
 
-    private Object[] items;
+    private final Object[] items;
     // 添加的下标，删除的下标和数组当前数量
     private int addIndex, removeIndex, count;
-    private Lock lock = new ReentrantLock();
+    private final Lock lock = new ReentrantLock();
     /**
      * 非空条件
      */
-    private Condition notEmpty = lock.newCondition();
+    private final Condition notEmpty = lock.newCondition();
     /**
      * 非满条件
      */
-    private Condition notFull = lock.newCondition();
+    private final Condition notFull = lock.newCondition();
 
     public BoundedQueueWithCondition(int size) {
         items = new Object[size];

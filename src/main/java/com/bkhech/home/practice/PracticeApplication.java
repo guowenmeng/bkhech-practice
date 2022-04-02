@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping
 public class PracticeApplication {
 
-    private AtomicInteger count = new AtomicInteger(0);
+    private final AtomicInteger count = new AtomicInteger(0);
 
     @GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

@@ -20,7 +20,7 @@ public class ExchangerDemo {
      * java7 钻石语法
      */
     private static final Exchanger<String> exchanger = new Exchanger<>();
-    private static ExecutorService threadPool = Executors.newFixedThreadPool(3);
+    private static final ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
     public static void main(String[] args) {
         threadPool.execute(new Runnable() {

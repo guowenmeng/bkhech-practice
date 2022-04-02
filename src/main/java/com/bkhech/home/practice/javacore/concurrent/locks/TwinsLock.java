@@ -1,7 +1,5 @@
 package com.bkhech.home.practice.javacore.concurrent.locks;
 
-import com.sun.corba.se.impl.orbutil.concurrent.Sync;
-
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
@@ -28,8 +26,6 @@ import java.util.concurrent.locks.Lock;
  * <p>
  * 最后，组合自定义同步器。前面的章节提到，自定义同步组件通过组合自定义同步器来完
  * 成同步功能，一般情况下自定义同步器会被定义为自定义同步组件的内部类。
- *
- *
  * @see Semaphore
  * 可用 Semaphore semaphore = new Semaphore(2); 替换
  */

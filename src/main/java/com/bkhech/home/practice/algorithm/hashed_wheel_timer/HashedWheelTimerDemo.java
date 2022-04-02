@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2021/9/28
  */
 public class HashedWheelTimerDemo {
-    private static HashedWheelTimer timer = new HashedWheelTimer();
+    private static final HashedWheelTimer timer = new HashedWheelTimer();
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("start");

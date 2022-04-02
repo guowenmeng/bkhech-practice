@@ -54,8 +54,8 @@ public class DrawPicTest1 {
         /** 折线 （各个点相互连接） */
         int xPoly = 50;
         int yPoly = 85;
-        int xPoints[] = new int[]{xPoly, xPoly + 20, xPoly + 260, xPoly + 260, xPoly + 20};
-        int yPoints[] = new int[]{yPoly, yPoly - 35, yPoly - 35, yPoly + 35, yPoly + 35};
+        int[] xPoints = new int[]{xPoly, xPoly + 20, xPoly + 260, xPoly + 260, xPoly + 20};
+        int[] yPoints = new int[]{yPoly, yPoly - 35, yPoly - 35, yPoly + 35, yPoly + 35};
         int nPoints = 5;
 
 //        g.drawPolyline(xPoints, yPoints, nPoints);

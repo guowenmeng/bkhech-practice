@@ -14,7 +14,7 @@ import java.util.Objects;
  * @description
  */
 public class NetworkClassLoader extends ClassLoader{
-    private String rootUrl;
+    private final String rootUrl;
 
     public NetworkClassLoader(String rootUrl) {
         super();

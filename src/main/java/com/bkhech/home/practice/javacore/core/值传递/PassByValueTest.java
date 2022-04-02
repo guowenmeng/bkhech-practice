@@ -6,7 +6,7 @@ package com.bkhech.home.practice.javacore.core.值传递;
  * @description java 只有值传递
  */
 public class PassByValueTest {
-    public static void main(String argv[ ]) {
+    public static void main(String[] argv) {
         PassByValueTest t = new PassByValueTest( );
         t.first();
         //结果为：15 0 20
