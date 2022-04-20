@@ -1,0 +1,55 @@
+{
+    "type": 0,
+    "step": 2,
+    "press": 20,
+    "dir_type": 0,
+    "dir_addr_1p": 16757400,
+    "dir_value_1p": 1,
+    "dir_addr_2p": 16757784,
+    "dir_value_2p": 1,
+    "dir_addr_3p": 16758168,
+    "dir_value_3p": 1,
+    "cha_addr_1p": 0,
+    "cha_addr_2p": 0,
+    "cha_addr_3p": 0,
+    "skills_table": [
+        {
+            "name": "全人物",
+			"alias": "all characters",
+            "cha_value": 0,
+            "mount": 5,
+            "skill": [
+                {
+                    "skill_name": "特殊技",
+                    "skill_type": "特殊技",
+					"skill_set":"↓↑A",
+                    "skill_key": "2288+A"
+                },
+				{
+                    "skill_name": "特殊技",
+                    "skill_type": "普通技",
+					"skill_set": "跳跃至最高点A",
+                    "skill_key": "B-A"
+                },
+                {
+                    "skill_name": "必杀技",
+                    "skill_type": "超必杀技",
+					"skill_set": "AB",
+                    "skill_key": "AB"
+                },
+                {
+                    "skill_name": "拳",
+                    "skill_type": "普通技",
+					"skill_set": "A",
+                    "skill_key": "A"
+                },
+				{
+                    "skill_name": "跳跃",
+                    "skill_type": "普通技",
+					"skill_set": "B",
+                    "skill_key": "B"
+                }
+            ]
+        }
+    ]
+}
