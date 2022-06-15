@@ -2,8 +2,10 @@ package com.bkhech.home.practice.spring.lifecycle;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration(proxyBeanMethods = false)
+@Import(MyImportBeanDefinitionRegistrar.class)
 public class LifecycleDemoConfig {
 
     @Bean(initMethod = "initMethod")

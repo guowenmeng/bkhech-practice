@@ -2,7 +2,10 @@ package com.bkhech.home.practice.spring.lifecycle;
 
 import com.bkhech.home.practice.spring.springioc.configuration.User;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,13 +17,13 @@ import org.springframework.stereotype.Component;
  * @author guowm
  * @date 2021/5/14
  */
-public class LifecycleDemoBeanPostProcessor implements BeanPostProcessor {
+public class LifecycleDemoBeanPostProcessor implements BeanPostProcessor, InstantiationAwareBeanPostProcessor {
 
     public LifecycleDemoBeanPostProcessor() {
         System.out.println("LifecycleDemoBeanPostProcessor constructor");
     }
 
-
+    /** ------------------BeanPostProcessor 中方法 start---------------------------------------*/
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         // 根据条件处理业务逻辑
@@ -37,5 +40,37 @@ public class LifecycleDemoBeanPostProcessor implements BeanPostProcessor {
         }
         return bean;
     }
+    /** ------------------BeanPostProcessor 中方法 end---------------------------------------*/
+
+
+    /** ------------------InstantiationAwareBeanPostProcessor 中方法 start---------------------------------------*/
+    @Override
+    @Nullable
+    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+        if (beanClass.isAssignableFrom(LifecycleDemo.class) || beanClass.isAssignableFrom(LifecycleDemo2.class) || beanClass.isAssignableFrom(User.class)) {
+            System.out.println("LifecycleDemoBeanPostProcessor postProcessBeforeInstantiation----" + beanName);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+        if (bean instanceof LifecycleDemo || bean instanceof LifecycleDemo2 || bean instanceof User) {
+            System.out.println("LifecycleDemoBeanPostProcessor postProcessAfterInstantiation----" + beanName);
+        }
+        return true;
+    }
+
+    @Override
+    @Nullable
+    public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName)
+            throws BeansException {
+        if (bean instanceof LifecycleDemo || bean instanceof LifecycleDemo2 || bean instanceof User) {
+            System.out.println("LifecycleDemoBeanPostProcessor postProcessProperties----" + beanName);
+        }
+        return null;
+    }
+    /** ------------------InstantiationAwareBeanPostProcessor 中方法 end---------------------------------------*/
+
 
 }
