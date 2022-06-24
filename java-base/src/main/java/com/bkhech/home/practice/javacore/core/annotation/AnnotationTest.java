@@ -14,7 +14,7 @@ import java.util.Map;
 public class AnnotationTest {
 
     public static void main(String[] args) {
-        // 生成并保存代理文件到本地， 是AnnotationUtils.findAnnotation 方法生成的
+        // 让jdk自动生成class代理文件到保存到本地， 是AnnotationUtils.findAnnotation 方法生成的
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 
         Map<OrderType, OrderHandler> orderTypeContainer = new HashMap<>(2);
