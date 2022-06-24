@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.bkhech.home</groupId>
+		<artifactId>bkhech-practice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>java-base</artifactId>
+
+	<name>base</name>
+	<description>java base project</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>28.0-jre</version>
+		</dependency>
+
+		<!-- 生成二维码 start -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+		<!-- 生成二维码 end -->
+
+		<!-- protobuf start -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.11.1</version>
+		</dependency>
+		<!-- protobuf end -->
+
+		<!-- tokenizer start -->
+		<!-- jieba -->
+		<!--		<dependency>-->
+		<!--			<groupId>com.huaban</groupId>-->
+		<!--			<artifactId>jieba-analysis</artifactId>-->
+		<!--			<version>1.0.3-SNAPSHOT</version>-->
+		<!--		</dependency>-->
+		<!--		TFIDFAnalyzer类库并没有发布到 maven仓库，采用本地编译方式-->
+		<dependency>
+			<groupId>com.huaban</groupId>
+			<artifactId>jieba-analysis</artifactId>
+			<version>1.0.3-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/jieba-analysis-1.0.3-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<!-- jieba -->
+
+		<!--ansj-->
+		<dependency>
+			<groupId>org.ansj</groupId>
+			<artifactId>ansj_seg</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+		<!--ansj-->
+		<!-- tokenizer end -->
+
+		<!-- dynamic proxy start cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+		<!-- dynamic proxy end -->
+
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.56.Final</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
+		<dependency>
+			<groupId>io.reactivex.rxjava2</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>2.2.20</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.bkhech</groupId>
+			<artifactId>object-size</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/object-size-agent-1.0.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!--OpenJDK官方提供的JOL(Java Object Layout)工具，我们即可很方便分析、了解一个Java对象在内存当中的具体布局情况-->
+		<dependency>
+			<groupId>org.openjdk.jol</groupId>
+			<artifactId>jol-core</artifactId>
+			<version>0.16</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--
+				 去除外部依赖包配置
+				<configuration>
+					<includes>
+						<include>
+							<groupId>nothing</groupId>
+							<artifactId>nothing</artifactId>
+						</include>
+					</includes>
+				</configuration>
+				-->
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

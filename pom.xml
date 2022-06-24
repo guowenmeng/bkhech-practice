@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.brian.home</groupId>
+	<groupId>com.bkhech.home</groupId>
 	<artifactId>bkhech-practice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+
+	<modules>
+		<module>bigdata</module>
+		<module>java-base</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>practice</name>
-	<description>bkhech project for Spring Boot</description>
+	<description>bkhech project for practice</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.12</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -25,187 +32,98 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<version>1.18.24</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.53</version>
+			<version>2.0.7</version>
+		</dependency>
+
+		<!--logback  begin-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.11</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>28.0-jre</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.11</version>
 		</dependency>
-
-		<!-- 生成二维码 start -->
-		<dependency>
-			<groupId>com.google.zxing</groupId>
-			<artifactId>core</artifactId>
-			<version>3.3.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.google.zxing</groupId>
-			<artifactId>javase</artifactId>
-			<version>3.3.3</version>
-		</dependency>
-		<!-- 生成二维码 end -->
-
-		<!-- protobuf start -->
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java</artifactId>
-			<version>3.11.1</version>
-		</dependency>
-		<!-- protobuf end -->
-
-		<!-- tokenizer start -->
-		<!-- jieba -->
-<!--		<dependency>-->
-<!--			<groupId>com.huaban</groupId>-->
-<!--			<artifactId>jieba-analysis</artifactId>-->
-<!--			<version>1.0.3-SNAPSHOT</version>-->
-<!--		</dependency>-->
-<!--		TFIDFAnalyzer类库并没有发布到 maven仓库，采用本地编译方式-->
-		<dependency>
-			<groupId>com.huaban</groupId>
-			<artifactId>jieba-analysis</artifactId>
-			<version>1.0.3-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/jieba-analysis-1.0.3-SNAPSHOT.jar</systemPath>
-		</dependency>
-		<!-- jieba -->
-
-		<!--ansj-->
-		<dependency>
-			<groupId>org.ansj</groupId>
-			<artifactId>ansj_seg</artifactId>
-			<version>5.1.6</version>
-		</dependency>
-		<!--ansj-->
-		<!-- tokenizer end -->
-
-		<!-- dynamic proxy start cglib -->
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>3.3.0</version>
-		</dependency>
-
-		<!-- dynamic proxy end -->
-
-		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
-		<dependency>
-			<groupId>io.netty</groupId>
-			<artifactId>netty-all</artifactId>
-			<version>4.1.56.Final</version>
-		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
-		<dependency>
-			<groupId>io.reactivex.rxjava2</groupId>
-			<artifactId>rxjava</artifactId>
-			<version>2.2.20</version>
-		</dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-        </dependency>
-
-		<dependency>
-			<groupId>com.bkhech</groupId>
-			<artifactId>object-size</artifactId>
-			<version>1.0.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/object-size-agent-1.0.0.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-
-		<!--OpenJDK官方提供的JOL(Java Object Layout)工具，我们即可很方便分析、了解一个Java对象在内存当中的具体布局情况-->
-		<dependency>
-			<groupId>org.openjdk.jol</groupId>
-			<artifactId>jol-core</artifactId>
-			<version>0.16</version>
-		</dependency>
-
-
-		<!-- hadoop -->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.hadoop</groupId>-->
-<!--			<artifactId>hadoop-common</artifactId>-->
-<!--			<version>3.2.3</version>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>3.2.3</version>
-            <!--	表示只在编译的时候使用这个依赖，在执行以及打包的时候都不使用		-->
-			<scope>provided</scope>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.apache.hadoop</groupId>-->
-<!--			<artifactId>hadoop-hdfs</artifactId>-->
-<!--			<version>3.2.3</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.hadoop</groupId>-->
-<!--			<artifactId>hadoop-mapreduce-client-core</artifactId>-->
-<!--			<version>3.2.3</version>-->
-<!--		</dependency>-->
-		<!-- hadoop end -->
+		<!--logback  end-->
 
 	</dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+
+		</dependencies>
+	</dependencyManagement>
+
+    <!--
+    pom中配置maven仓库（阿里仓库）
+
+		配置maven仓库，可以在maven的settings.xml里改。优点是全局统一配置，缺点是不受你项目git管理。
+		也可以直接在pom.xml里改, 好处就是 可以受git管理，缺点是每个项目的pom你都得配置。
+
+		maven自动下载依赖时，会涉级读取三个配置文件，分别是项目下的pom.xml 文件 、家目录下的.m2/settings.xml 与 maven 全局配置settings.xml ，
+		后面两者不难理解，就像linux下的用户一样，有一个/etc/profile ，用户用目录下还有一个.bash_profile 文件是一样的，用户自定义配置会覆盖全局配置。
+
+		三者的级先是 pom.xml > /home_dir/.m2/settings.xml > /maven_dir/conf/settings.xml 。
+
+		总结： 相对来说，在pom中配置maven仓库比较好，项目代码放到哪都没有问题。
+     -->
+	<repositories>
+		<repository>
+			<id>aliyun</id>
+			<url>https://maven.aliyun.com/repository/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<!--	注意： pluginRepositories配置容易被忽略，pluginRepositories用来配置maven插件的远程仓库，
+		否则只有项目本身的依赖，走了aliyun这个repository，maven命令需要的插件（比如clean、install都是maven的插件），
+		走的还是默认的repository-->
+		<pluginRepository>
+			<id>aliyun-plugin</id>
+			<url>https://maven.aliyun.com/repository/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!--
-				 去除外部依赖包配置
-				<configuration>
-					<includes>
-						<include>
-							<groupId>nothing</groupId>
-							<artifactId>nothing</artifactId>
-						</include>
-					</includes>
-				</configuration>
-				-->
-			</plugin>
+
 		</plugins>
 	</build>
 
